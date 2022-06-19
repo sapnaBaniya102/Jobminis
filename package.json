@@ -1,0 +1,19 @@
+{
+  "name": "jobminis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "copy-html": "mkdir -p views/app && mv dist/index.html views/app/",
+    "optimize-svg": "svgo -f ./dist/assets",
+    "watch-landing": "tailwindcss -i ./public/styles/vendor.css -o ./dist/css/landing.css -w",
+    "build-landing": "tailwindcss -i ./public/styles/vendor.css -o ./dist/css/landing.css --minify",
+    "build": "pnpm watch-landing && pnpm build-landing && pnpm copy-html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.0.24"
+  }
+}
