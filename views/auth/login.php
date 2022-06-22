@@ -54,14 +54,14 @@
     <div class="container mt-28">
         <div class="lg:flex g-0">
             <div class="lg:w-6/12  ml-32 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none   bg-teal-50">
-                <img src="../img/login.png" alt="">
+                <img src="../../img/login.png" alt="">
             </div>
             <div class="lg:w-6/12 ml-10 px-10 md:px-0 ">
                 <div class="md:p-12 md:mx-6 ">
                     <div class="text-center ">
                         <h4 class="text-3xl font-semibold mt-1 mb-12 pb-1 ">Sign In</h4>
                     </div>
-                    <form class="user"  action="process/loginprocess.php" method="POST" enctype="multipart/form-data">
+                    <form class="user"  action="../process/loginprocess.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-4 ">
                             <input type="email " name="email" class="form-control block w-full rounded-full px-3 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700
                         focus:bg-white focus:border-blue-600 focus:outline-none " id="exampleFormControlInput1 " placeholder="Email " />
