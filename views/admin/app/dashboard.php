@@ -1,5 +1,6 @@
 <?php
-require('../inc/header.php');
+
+require ('../inc/header.php');
 require('../inc/navbar.php');
 ?>
 
@@ -148,7 +149,7 @@ require('../inc/sidebar.php')
             
             <!-- image -->
             <div class="img-wrapper w-40 h-40 flex justify-center items-center">
-                <img src="./img/happy.svg" alt="img title">
+                <img src="../../../img/happy.svg" alt="img title">
             </div>
             <!-- end image -->
 

@@ -17,12 +17,12 @@ include '../layouts/header.php'
                 </ul>
             </div>
             <div class="account flex space-x-3 mt-5">
-                <a href="">
+                <a href="../auth/signup.php">
                     <div class="post_job bg-blue-900 hover:bg-white hover:border hover:border-blue-900 hover:text-blue-900 text-white p-2 px-4 rounded-full">
                         <span>Post a Job</span>
                     </div>
                 </a>
-                <a href="">
+                <a href="../auth/login.php">
                     <div class="post_job bg-blue-900 hover:bg-white hover:border hover:border-blue-900 hover:text-blue-900 text-white p-2 px-4 rounded-full">
                         <span>Sign In</span>
                     </div>

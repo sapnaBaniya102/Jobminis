@@ -19,7 +19,7 @@ include 'header.php'
       <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
 
       <!-- link -->
-      <a href="../auth/dashboard.php" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+      <a href="../app/dashboard.php" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
         <i class="fad fa-chart-pie text-xs mr-2"></i>                
     dashboard
       </a>
@@ -28,7 +28,7 @@ include 'header.php'
       <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Elements</p>
 
       <!-- link -->
-      <a href="../auth/uploadfile.php" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+      <a href="../app/uploadfile.php" class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
       <i class="fad fa-folder-open text-xs mr-2"></i>
         File Manager
       </a>
