@@ -7,20 +7,21 @@ include '../connection/config.php';
 <main>
     <section class="" id="home">
         <div class="main-content py-16 bg-teal-50">
-        <?php
-                $slider_query = "SELECT * FROM sliders";
-                $slider_result = mysqli_query($conn,$slider_query);
-                $count=0;
-                while($data=mysqli_fetch_array($slider_result))
-                {
-                    $count+=1; //$sn=$sn+1
-                    ?>
-            <div class="container_wrapper grid grid-cols-2 mt-20">
-                <div class="search_wrapper col-span-1 w-full space-x-7">
-               
-                    <div class="search_content space-y-8 text-center <?php if($count==1) { echo "active"; } ?>"">
+            <?php
+            $slider_query = "SELECT * FROM sliders";
+            $slider_result = mysqli_query($conn, $slider_query);
+            $count = 0;
+            while ($data = mysqli_fetch_array($slider_result)) {
+                $count += 1; //$sn=$sn+1
+            ?>
+                <div class="container_wrapper grid grid-cols-2 mt-20">
+                    <div class="search_wrapper col-span-1 w-full space-x-7">
 
-                        <div class="content_text space-y-4 ml-32">
+                        <div class="search_content space-y-8 text-center <?php if ($count == 1) {
+                                                                                echo "active";
+                                                                            } ?>"">
+
+                        <div class=" content_text space-y-4 ml-32">
                             <h1 class="text-6xl font-extrabold font-serif"><?php echo $data['h1'] ?></h1>
                             <!-- <div class="flex space-x-6">
                                 <span class="text-6xl font-extrabold font-serif text-teal-600">Job</span>
@@ -44,7 +45,7 @@ include '../connection/config.php';
                             </ul>
                         </div>
                     </div>
-                
+
 
                 </div>
                 <div class="photo_icon col-span-1 w-full pl-48">
@@ -55,11 +56,11 @@ include '../connection/config.php';
                     <div class="div2 w-1/5 origin-bottom-left rotate-12 rounded-3xl h-3/6 bg-teal-700 absolute top-28"></div>
                 </div>
 
-            </div>
-            <?php
-          }
-        ?>
         </div>
+    <?php
+            }
+    ?>
+    </div>
     </section>
 
     <!-- search by category started-->
@@ -253,38 +254,64 @@ include '../connection/config.php';
     <section id="faqs" class=" md:py-[120px] relative">
         <div class="container">
             <div class="flex flex-wrap -mx-4 mb-4 wow fadeInUp ">
+            <?php
+                                $name_query = "SELECT * FROM siteconfig WHERE name='questions'";
+                                $name_result = mysqli_query($conn, $name_query);
+                                $row = $name_result->fetch_assoc();
+
+                                ?>
                 <div class="w-full px-4">
                     <h3 class="font-bold text-center text-3xl sm:text-4xl md:text-[40px] text-dark mb-4">
-                        Frequently Asked Questions(FAQs)
+                        <?php
+                        echo $row['site_key'];
+                        ?>
                     </h3>
                     <p class="text-base text-center sm:text-xl leading-relaxed sm:leading-relaxed text-body-color">
-                        The most common questions about how our application works and what can it do for you.
+                       <?php
+                       echo $row['site_value'];
+                       ?>
                     </p>
                 </div>
             </div>
             <div class=" sm:mx-auto sm:mb-2 -mx-2 py-2 wow fadeInUp">
                 <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
                     <div class="w-full lg:w-1/2 px-4 py-2">
+                    <?php
+                                $name_query = "SELECT * FROM siteconfig WHERE name='questions1'";
+                                $name_result = mysqli_query($conn, $name_query);
+                                $row = $name_result->fetch_assoc();
+
+                                ?>
                         <details class="mb-4 border rounded-lg">
                             <summary class="cursor-pointer text-dark bg-light-400 py-2 px-4 pl-2 shadow">
-                                How does this site work?
+                                <?php
+                                echo $row['site_key'];
+                                ?>
                             </summary>
                             <div class=" py-2 px-4 text-justify">
                                 <span class="">
-                                    We provide a portal to use your services to create flow for your business and run such
-                                    flow with data sources.
+                                <?php
+                                echo $row['site_value'];
+                                ?>
                                 </span>
                             </div>
                         </details>
+                        <?php
+                                $name_query = "SELECT * FROM siteconfig WHERE name='questions2'";
+                                $name_result = mysqli_query($conn, $name_query);
+                                $row = $name_result->fetch_assoc();
+
+                                ?>
                         <details class="mb-4 border rounded-lg">
                             <summary class="cursor-pointer text-dark bg-light-400 py-2 px-4 pl-2 shadow">
-                                Can I send email or sms from this site?
+                               <?php echo $row['site_key'];
+                               ?>
                             </summary>
                             <div class="bg-light-400 py-2 px-4 text-justify">
                                 <span class="">
-                                    Yes, Of course, we provide you the flexibility to choose your own service providers to
-                                    send email or sms. Currently we do not provide service providers for email of sms from
-                                    our site?
+                                   <?php
+                                   echo $row['site_value'];
+                                   ?>
                                 </span>
                             </div>
                         </details>
@@ -369,13 +396,26 @@ include '../connection/config.php';
                                         <path d="M14.5 8.58594C11.2734 8.58594 8.59375 11.2109 8.59375 14.4922C8.59375 17.7188 11.2187 20.3984 14.5 20.3984C17.7812 20.3984 20.4062 17.7734 20.4062 14.4922C20.4062 11.2109 17.7266 8.58594 14.5 8.58594ZM14.5 18.4297C12.3125 18.4297 10.5078 16.625 10.5078 14.4375C10.5078 12.25 12.3125 10.4453 14.5 10.4453C16.6875 10.4453 18.4922 12.25 18.4922 14.4375C18.4922 16.625 16.6875 18.4297 14.5 18.4297Z" />
                                     </svg>
                                 </div>
+                                <?php
+                                $name_query = "SELECT * FROM siteconfig WHERE name='location'";
+                                $name_result = mysqli_query($conn, $name_query);
+                                $row = $name_result->fetch_assoc();
+
+                                ?>
                                 <div>
+
                                     <h5 class="text-lg font-semibold mb-6">
-                                        Our Location
+                                        <?php
+
+                                        echo $row['site_key'];
+                                        ?>
                                     </h5>
                                     <p class="text-base text-body-color">
 
-                                        NP: Pokhara, Gandaki, Nepal
+                                        <?php
+
+                                        echo $row['site_value'];
+                                        ?>
                                     </p>
                                 </div>
                             </div>
@@ -385,12 +425,20 @@ include '../connection/config.php';
                                         <path d="M30.5156 0.960938H3.17188C1.42188 0.960938 0 2.38281 0 4.13281V20.9219C0 22.6719 1.42188 24.0938 3.17188 24.0938H30.5156C32.2656 24.0938 33.6875 22.6719 33.6875 20.9219V4.13281C33.6875 2.38281 32.2656 0.960938 30.5156 0.960938ZM30.5156 2.875C30.7891 2.875 31.0078 2.92969 31.2266 3.09375L17.6094 11.3516C17.1172 11.625 16.5703 11.625 16.0781 11.3516L2.46094 3.09375C2.67969 2.98438 2.89844 2.875 3.17188 2.875H30.5156ZM30.5156 22.125H3.17188C2.51562 22.125 1.91406 21.5781 1.91406 20.8672V5.00781L15.0391 12.9922C15.5859 13.3203 16.1875 13.4844 16.7891 13.4844C17.3906 13.4844 17.9922 13.3203 18.5391 12.9922L31.6641 5.00781V20.8672C31.7734 21.5781 31.1719 22.125 30.5156 22.125Z" />
                                     </svg>
                                 </div>
+                                <?php
+                                $name_query = "SELECT * FROM siteconfig WHERE name='location'";
+                                $name_result = mysqli_query($conn, $name_query);
+                                $row = $name_result->fetch_assoc();
+
+                                ?>
                                 <div>
                                     <h5 class="text-lg font-semibold mb-6">
-                                        How Can We Help?
+                                       <?php echo $row['site_key'];
+                                       ?>
                                     </h5>
                                     <p class="text-base text-body-color">
-                                        jobminis@gmail.com
+                                        <?php echo $row['site_value'];
+                                        ?>
                                     </p>
                                 </div>
                             </div>
@@ -400,27 +448,27 @@ include '../connection/config.php';
                 <div class="px-4 w-full lg:w-5/12 xl:w-4/12">
 
                     <div class="shadow-testimonial rounded-lg bg-white py-10 px-8 md:p-[60px] lg:p-10 2xl:p-[60px] sm:py-12 sm:px-10 lg:py-12 lg:px-10 wow fadeInUp" data-wow-delay=".2s">
-                    <?php
-               if (isset($_POST['submit'])) {
-                  $name = $_POST['name'];
-                  $email = $_POST['email'];
-                  $phone = $_POST['phone'];
-                  $message = $_POST['message'];
-                  if ($name != "" && $email != "" && $phone != "" && $message != "") {
-                     $query = "INSERT INTO contacts (name,email,phone,message) VALUES('$name','$email','$phone','$message')";
-                     $result = mysqli_query($conn, $query);
-                     if ($result) {
-                        ?>
-                        <div class="bg-gray-100 text-center p-2 mt-2">
-                           <p>Contact is added successfully.</p>
-                        </div>
                         <?php
-                     } else {
-                        echo "Contact couldn't added successfully.";
-                     }
-                  }
-               }
-               ?>
+                        if (isset($_POST['submit'])) {
+                            $name = $_POST['name'];
+                            $email = $_POST['email'];
+                            $phone = $_POST['phone'];
+                            $message = $_POST['message'];
+                            if ($name != "" && $email != "" && $phone != "" && $message != "") {
+                                $query = "INSERT INTO contacts (name,email,phone,message) VALUES('$name','$email','$phone','$message')";
+                                $result = mysqli_query($conn, $query);
+                                if ($result) {
+                        ?>
+                                    <div class="bg-gray-100 text-center p-2 mt-2">
+                                        <p>Contact is added successfully.</p>
+                                    </div>
+                        <?php
+                                } else {
+                                    echo "Contact couldn't added successfully.";
+                                }
+                            }
+                        }
+                        ?>
                         <h3 class="font-semibold mb-8 text-2xl md:text-[26px]">
                             Send us a Message
                         </h3>
