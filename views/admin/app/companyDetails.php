@@ -1,6 +1,5 @@
 <?php
-include '../layouts/header.php';
-include '../layouts/nav.php';
+include '../inc/header.php';
 ?>
 
 <main>
@@ -160,5 +159,5 @@ include '../layouts/nav.php';
     </div>
 </main>
 <?php
-include '../layouts/footer.php'
+include '../inc/footer.php'
 ?>

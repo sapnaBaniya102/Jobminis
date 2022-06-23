@@ -6,7 +6,7 @@ include 'header.php'
     
     <!-- logo -->
     <div class="flex-none flex flex-row items-center">
-      <img src="../../../img/logo.png " class="w-40 -mt-10 -mb-10 flex-none ">
+      <img src="../../../img/logo.png " class="w-2/6 -mt-10 -mb-10 flex-none ">
 
     </div>
     <!-- end logo -->   
@@ -77,7 +77,7 @@ include 'header.php'
             <hr>
 
             <!-- item -->
-            <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
+            <a href="../process/logout.php" class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
               <i class="fad fa-user-times text-xs mr-1"></i> 
               log out
             </a>     

@@ -1,9 +1,9 @@
 <?php
-if(isset($_SESSION['email']))
-{
+// if(isset($_SESSION['email']))
+// {
 
-}
-else{
-    echo header('Location: login.php?msg=invaliduser');
-}
+// }
+// else{
+//     echo header('Location: login.php?msg=invaliduser');
+// }
 ?>

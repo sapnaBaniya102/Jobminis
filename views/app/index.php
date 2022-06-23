@@ -1,22 +1,33 @@
 <?php
 include '../layouts/header.php';
-include '../layouts/nav.php'
+include '../layouts/nav.php';
+include '../connection/config.php';
 ?>
 
 <main>
     <section class="" id="home">
         <div class="main-content py-16 bg-teal-50">
+        <?php
+                $slider_query = "SELECT * FROM sliders";
+                $slider_result = mysqli_query($conn,$slider_query);
+                $count=0;
+                while($data=mysqli_fetch_array($slider_result))
+                {
+                    $count+=1; //$sn=$sn+1
+                    ?>
             <div class="container_wrapper grid grid-cols-2 mt-20">
                 <div class="search_wrapper col-span-1 w-full space-x-7">
-                    <div class="search_content space-y-8 text-center">
+               
+                    <div class="search_content space-y-8 text-center <?php if($count==1) { echo "active"; } ?>"">
+
                         <div class="content_text space-y-4 ml-32">
-                            <h1 class="text-6xl font-extrabold font-serif">Find the perfect</h1>
-                            <div class="flex space-x-6">
+                            <h1 class="text-6xl font-extrabold font-serif"><?php echo $data['h1'] ?></h1>
+                            <!-- <div class="flex space-x-6">
                                 <span class="text-6xl font-extrabold font-serif text-teal-600">Job</span>
                                 <h1 class="text-6xl font-extrabold font-serif">for you</h1>
-                            </div>
+                            </div> -->
                         </div>
-                        <h2 class="text-gray-600 text-2xl font-extralight font-serif">Search your career opportunity here</h2>
+                        <h2 class="text-gray-600 text-2xl font-extralight font-serif"><?php echo $data['p']; ?></h2>
                         <div class="search_area p-2 w-3/4 rounded-full bg-white shadow-lg shadow-gray-500 mx-auto">
                             <input type="text" class="p-3 w-5/6 bg-white" placeholder="Job Title or Keyword">
                             <i class="fa-solid fa-magnifying-glass text-white p-4 rounded-full bg-teal-700"></i>
@@ -33,17 +44,21 @@ include '../layouts/nav.php'
                             </ul>
                         </div>
                     </div>
+                
 
                 </div>
                 <div class="photo_icon col-span-1 w-full pl-48">
                     <div class="photo_content absolute top-28 w-1/5 rounded-3xl bg-gradient-to-b from-zinc-800 z-20 to-gray-200 h-3/6">
-                        <img src="../../public/image-removebg-preview (5).png" class="py-16" alt="" width="1000">
+                        <img src="../admin/uploads/<?php echo $data['img']; ?>" class="py-16" alt="" width="1000">
                     </div>
                     <div class="div1 w-1/5 origin-bottom-left z-10 rotate-6 rounded-3xl h-3/6 bg-blue-900 absolute top-28"></div>
                     <div class="div2 w-1/5 origin-bottom-left rotate-12 rounded-3xl h-3/6 bg-teal-700 absolute top-28"></div>
                 </div>
 
             </div>
+            <?php
+          }
+        ?>
         </div>
     </section>
 
@@ -108,7 +123,7 @@ include '../layouts/nav.php'
         </div>
         <div class="search-button mx-auto mt-10 p-3 flex space-x-3 hover:w-52  bg-teal-700 rounded-3xl w-48 ">
             <button class=" rounded-3xl text-white text-lg font-semibold text-center">All Categories</button>
-          
+
             <i class="fa-solid fa-chevron-right text-md mt-2 font-semibold text-white"></i>
         </div>
     </section>
@@ -226,8 +241,8 @@ include '../layouts/nav.php'
             </div>
             <div class="search-button mx-auto  p-3 flex hover:w-52 space-x-3 bg-teal-700 rounded-3xl w-48 ">
                 <button class=" rounded-3xl text-white text-lg font-semibold pl-3 text-center">All Job Offers</button>
-                
-            <i class="fa-solid fa-chevron-right text-md mt-2 font-semibold text-white"></i>
+
+                <i class="fa-solid fa-chevron-right text-md mt-2 font-semibold text-white"></i>
             </div>
         </div>
 
@@ -383,11 +398,34 @@ include '../layouts/nav.php'
                     </div>
                 </div>
                 <div class="px-4 w-full lg:w-5/12 xl:w-4/12">
+
                     <div class="shadow-testimonial rounded-lg bg-white py-10 px-8 md:p-[60px] lg:p-10 2xl:p-[60px] sm:py-12 sm:px-10 lg:py-12 lg:px-10 wow fadeInUp" data-wow-delay=".2s">
+                    <?php
+               if (isset($_POST['submit'])) {
+                  $name = $_POST['name'];
+                  $email = $_POST['email'];
+                  $phone = $_POST['phone'];
+                  $message = $_POST['message'];
+                  if ($name != "" && $email != "" && $phone != "" && $message != "") {
+                     $query = "INSERT INTO contacts (name,email,phone,message) VALUES('$name','$email','$phone','$message')";
+                     $result = mysqli_query($conn, $query);
+                     if ($result) {
+                        ?>
+                        <div class="bg-gray-100 text-center p-2 mt-2">
+                           <p>Contact is added successfully.</p>
+                        </div>
+                        <?php
+                     } else {
+                        echo "Contact couldn't added successfully.";
+                     }
+                  }
+               }
+               ?>
                         <h3 class="font-semibold mb-8 text-2xl md:text-[26px]">
                             Send us a Message
                         </h3>
-                        <form method="POST" action="/inquire">
+
+                        <form action="#" method="POST" enctype="multipart/form-data">
                             <div class="mb-6">
                                 <label for="fullName" class="block text-xs text-dark">Full Name*</label>
                                 <input required type="text" name="name" placeholder="Adam Gelius" class="w-full border-0 border-b border-[#f1f1f1] focus:border-primary focus:outline-none py-4" />
@@ -402,7 +440,7 @@ include '../layouts/nav.php'
                             </div>
                             <div class="mb-6">
                                 <label required for="message" class="block text-xs text-dark">Message*</label>
-                                <textarea name="message" rows="1" placeholder="type your message here" class="w-full border-0 border-b border-[#f1f1f1] focus:border-primary focus:outline-none py-4 resize-none"></textarea>
+                                <textarea required type="text" name="message" rows="1" placeholder="type your message here" class="w-full border-0 border-b border-[#f1f1f1] focus:border-primary focus:outline-none py-4 resize-none"></textarea>
                             </div>
                             <div class="mb-0">
                                 <button type="submit" name="submit" class="inline-flex items-center justify-center py-4 px-6 rounded text-white bg-blue-600 text-base font-medium hover:bg-lite transition duration-300 ease-in-out">

@@ -1,10 +1,18 @@
 <?php
-include '../layouts/header.php';    
-include '../layouts/nav.php'
+include '../inc/header.php';
+require('../inc/navbar.php');
 ?>
 
-<div class="candidate-list-wrapper">
-    <div class="candidate-list-header bg-teal-50 p-20">             
+
+<!-- strat wrapper -->
+<div class="h-full flex flex-row flex-wrap bg-white">
+  <!-- start sidebar -->
+  <?php
+  require('../inc/sidebar.php')
+  ?>
+  <!-- end sidbar -->
+<div class="candidate-list-wrapper bg-white">
+    <div class="candidate-list-header w-full bg-teal-50 p-24 mt-8">             
         <h1 class="text-5xl font-bold mb-4">Search Candidate</h1>
         <span class="text-lg text-gray-600">Work with the most suitable candidates in the world</span>
         <form  class="mt-10 bg-white rounded-full p-3 grid grid-cols-4 gap-3">
@@ -24,10 +32,10 @@ include '../layouts/nav.php'
                     <h1 class="text-2xl font-semibold text-gray-600">Showing <span class="text-black"> 1523 </span> companies</h1>
                 </div>
     </div>
-    <div class="list-body my-3 mx-20 grid grid-cols-4 gap-5">
+    <div class="list-body my-3 mx-20 grid grid-cols-3 gap-5">
         <div class="candidate-card hover:shadow hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
         <div class="image">
-            <img src="../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
+            <img src="../../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
         </div>
         <h1 class="font-bold text-xl mt-3 ">Scott Goodwin</h1>
         <span class="text-sm">Marketing Expert</span>
@@ -42,7 +50,7 @@ include '../layouts/nav.php'
 
         <div class="candidate-card hover:shadow hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
         <div class="image">
-            <img src="../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
+            <img src="../../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
         </div>
         <h1 class="font-bold text-xl mt-3 ">Scott Goodwin</h1>
         <span class="text-sm">Marketing Expert</span>
@@ -57,7 +65,7 @@ include '../layouts/nav.php'
 
         <div class="candidate-card hover:shadow hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
         <div class="image">
-            <img src="../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
+            <img src="../../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
         </div>
         <h1 class="font-bold text-xl mt-3 ">Scott Goodwin</h1>
         <span class="text-sm">Marketing Expert</span>
@@ -72,7 +80,7 @@ include '../layouts/nav.php'
 
         <div class="candidate-card hover:shadow hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
         <div class="image">
-            <img src="../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
+            <img src="../../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
         </div>
         <h1 class="font-bold text-xl mt-3 ">Scott Goodwin</h1>
         <span class="text-sm">Marketing Expert</span>
@@ -87,7 +95,7 @@ include '../layouts/nav.php'
 
         <div class="candidate-card hover:shadow hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
         <div class="image">
-            <img src="../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
+            <img src="../../../public/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
         </div>
         <h1 class="font-bold text-xl mt-3 ">Scott Goodwin</h1>
         <span class="text-sm">Marketing Expert</span>
@@ -104,6 +112,7 @@ include '../layouts/nav.php'
 
     </div>
 </div>
+</div>
 <?php
-include '../layouts/footer.php'
+include '../inc/footer.php'
 ?>

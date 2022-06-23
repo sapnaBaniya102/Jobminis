@@ -86,10 +86,10 @@ if (isset($_POST['account'])) {
         
     $result = mysqli_query($conn, $accountQuery);
     if ($result) {
-        echo header("Location:../auth/signup.php#accountType");
+        echo header("Location:../admin/app/dashboard.php");
     }
     else {
-        echo header("Location:../auth/signup.php?msg=error#username");
+        echo header("Location:../auth/signup.php?msg=error#accountType");
     }
     
   

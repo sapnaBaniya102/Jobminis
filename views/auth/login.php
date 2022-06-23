@@ -54,7 +54,7 @@ require('../connection/config.php');
                     <div class="text-center ">
                         <h4 class="text-3xl font-semibold mt-1 mb-12 pb-1 ">Sign In</h4>
                     </div>
-                    <form class="user"  action="process/loginprocess.php" method="POST" enctype="multipart/form-data">
+                    <form class="user"  action="../admin/process/loginprocess.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-4 ">
                             <input type="email " name="email" class="form-control block w-full rounded-full px-3 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700
                         focus:bg-white focus:border-blue-600 focus:outline-none " id="exampleFormControlInput1 " placeholder="Email " />
