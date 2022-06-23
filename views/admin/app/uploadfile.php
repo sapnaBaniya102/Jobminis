@@ -6,13 +6,17 @@ require('../inc/navbar.php');
 
 
 <!-- strat wrapper -->
-<div class="h-screen flex flex-row flex-wrap">
+<div class="h-screen flex flex-row">
     <!-- start sidebar -->
     <?php
     require('../inc/sidebar.php')
     ?>
-    <div class="content ">
-        <?php
+     <section class="content w-full h-full" >
+          <!-- left column -->
+          <div class="">
+            <!-- general form elements -->
+            
+            <?php
         if (isset($_POST['submit'])) {
             $filename = $_POST['filename'];
 
@@ -35,7 +39,7 @@ require('../inc/navbar.php');
                             $result = mysqli_query($conn, $query);
                             if ($result) {
         ?>
-                                <meta http-equiv="refresh" content="0; URL=uploadfile.php?msg=csuccess" />
+                                <meta http-equiv="refresh" content="0; URL=managefile.php?msg=csuccess" />
         <?php
                                 echo "File is uploaded successfully.";
                             } else {
@@ -53,34 +57,49 @@ require('../inc/navbar.php');
             }
         }
         ?>
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Upload File</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form action="#" method="POST" enctype="multipart/form-data">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">File Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="filename" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">File</label>
-                        <input type="file" class="form-control" id="exampleInputPassword1" name="dataFile" placeholder="">
-                    </div>
-                </div>
+            <div class="card card-primary w-11/12 mx-auto my-6 relative">
+              <div class="card-header">
+                <h3 class="card-title text-3xl">Add Upload</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="#" method="POST" enctype="multipart/form-data">
+                <div class="card-body" >
+                  <div class="form-group mt-5">
+                    <label for="exampleInputEmail1" > File Name:</label>
+                    <input type="text" class="form-control border-solid border-2 rounded-md  w-full p-2" id="exampleInputEmail1" name="filename" placeholder="">
+                  </div>
+                  <div class="form-group mt-5">
+                    <label for="exampleInputEmail1" >File</label>
+                    <input type="file" class="form-control border-solid border-2 rounded-md  w-full p-2" id="exampleInputEmail1" name="dataFile" placeholder="">
+                  </div>
+                
+                
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" name="submit" value="" class="btn btn-primary">Submit</button>
                 </div>
-            </form>
-        </div>
-    </div>
+              </form>
+            </div>
+            <!-- /.card -->
+      </div><!-- /.container-fluid -->
+    </section>
 </div>
 <!-- end wrapper -->
 
 <?php
 require('../inc/footer.php');
 ?>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 <?php
-require('../inc/header.php');
+require ('../../connection/config.php');
+require ('../inc/header.php');
 require('../inc/navbar.php');
 ?>
 
@@ -145,25 +146,25 @@ require('../inc/navbar.php');
       <!-- update section -->
       <div class="card bg-teal-400 border-teal-400 shadow-md text-white">
         <div class="card-body flex flex-row">
+            
+            <!-- image -->
+            <div class="img-wrapper w-40 h-40 flex justify-center items-center">
+                <img src="../../../img/happy.svg" alt="img title">
+            </div>
+            <!-- end image -->
 
-          <!-- image -->
-          <div class="img-wrapper w-40 h-40 flex justify-center items-center">
-            <img src="./img/happy.svg" alt="img title">
-          </div>
-          <!-- end image -->
+            <!-- info -->
+            <div class="py-2 ml-10">
+                <h1 class="h6">Good Job, Mohamed!</h1>
+                <p class="text-white text-xs">You've finished all of your tasks for this week.</p>
 
-          <!-- info -->
-          <div class="py-2 ml-10">
-            <h1 class="h6">Good Job, Mohamed!</h1>
-            <p class="text-white text-xs">You've finished all of your tasks for this week.</p>
-
-            <ul class="mt-4">
-              <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Finish Dashboard Design</li>
-              <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Fix Issue #74</li>
-              <li class="text-sm font-light"><i class="fad fa-check-double mr-2"></i> Publish version 1.0.6</li>
-            </ul>
-          </div>
-          <!-- end info -->
+                <ul class="mt-4">
+                    <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Finish Dashboard Design</li>
+                    <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Fix Issue #74</li>
+                    <li class="text-sm font-light"><i class="fad fa-check-double mr-2"></i> Publish version 1.0.6</li>
+                </ul>
+            </div>
+            <!-- end info -->
 
         </div>
       </div>

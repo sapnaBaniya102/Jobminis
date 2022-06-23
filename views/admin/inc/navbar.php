@@ -5,8 +5,8 @@ include 'header.php'
 <div class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center bg-white p-6 border-b border-gray-300">
     
     <!-- logo -->
-    <div class="flex-none w-10 flex flex-row items-center">
-      <img src="../../img/logo.png " " class="w-40 flex-none ">
+    <div class="flex-none flex flex-row items-center">
+      <img src="../../../img/logo.png " class="w-40 -mt-10 -mb-10 flex-none ">
 
     </div>
     <!-- end logo -->   
@@ -33,7 +33,7 @@ include 'header.php'
 
           <button class="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center">
             <div class="w-8 h-8 overflow-hidden rounded-full">
-              <img class="w-full h-full object-cover" src="img/user.svg" >
+              <img class="w-full h-full object-cover" src="../../../img/user.svg" >
             </div> 
 
             <div class="ml-2 capitalize flex ">
@@ -233,7 +233,7 @@ include 'header.php'
             <a class="flex flex-row items-center justify-start px-4 py-4 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 transition-all duration-300 ease-in-out" href="#">
 
               <div class="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gray-100 border border-gray-300">
-                <img class="w-full h-full object-cover" src="img/user1.jpg" alt="">
+                <img class="w-full h-full object-cover" src="../../../img/user1.jpg" alt="">
               </div>
 
               <div class="flex-1 flex flex-rowbg-green-100">
@@ -254,7 +254,7 @@ include 'header.php'
             <a class="flex flex-row items-center justify-start px-4 py-4 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 transition-all duration-300 ease-in-out" href="#">
 
               <div class="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gray-100 border border-gray-300">
-                <img class="w-full h-full object-cover" src="img/user2.jpg" alt="">
+                <img class="w-full h-full object-cover" src="../../../img/user2.png" alt="">
               </div>
 
               <div class="flex-1 flex flex-rowbg-green-100">
@@ -275,7 +275,7 @@ include 'header.php'
             <a class="flex flex-row items-center justify-start px-4 py-4 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 transition-all duration-300 ease-in-out" href="#">
 
               <div class="w-10 h-10 rounded-full overflow-hidden mr-3 bg-gray-100 border border-gray-300">
-                <img class="w-full h-full object-cover" src="img/user3.jpg" alt="">
+                <img class="w-full h-full object-cover" src="../../../img/user3.jpg" alt="">
               </div>
 
               <div class="flex-1 flex flex-rowbg-green-100">
