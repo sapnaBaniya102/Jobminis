@@ -33,6 +33,6 @@
             <h1 class="text-center text-white font-light py-5">All rights reserved by @jobminis 2020</h1>
         </div>
     </footer>
-
+   
 </body>
 </html>
