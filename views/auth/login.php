@@ -54,14 +54,14 @@ require('../connection/config.php');
                     <div class="text-center ">
                         <h4 class="text-3xl font-semibold mt-1 mb-12 pb-1 ">Sign In</h4>
                     </div>
-                    <form class="user"  action="../admin/process/loginprocess.php" method="POST" enctype="multipart/form-data">
+                    <form class="user"  action="../process/loginprocess.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-4 ">
                             <input type="email " name="email" class="form-control block w-full rounded-full px-3 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700
-                        focus:bg-white focus:border-blue-600 focus:outline-none " id="exampleFormControlInput1 " placeholder="Email " />
+                        focus:bg-white focus:border-blue-600 focus:outline-none "  placeholder="Email " />
                         </div>
                         <div class="mb-4 ">
                             <input type="password" name="password" class="form-control block w-full rounded-full px-3 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700
-                        focus:bg-white focus:border-blue-600 focus:outline-none " id="exampleFormControlInput1 " placeholder="Password " />
+                        focus:bg-white focus:border-blue-600 focus:outline-none "  placeholder="Password " />
                         </div>
                         <div class="text-center pt-1 mb-12 pb-1 ">
                             <button class="inline-block px-3 py-5 text-white font-medium text-10 rounde rounded-full  leading-tight uppercase shadow-md hover:bg-teal-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg
