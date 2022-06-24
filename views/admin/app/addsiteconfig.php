@@ -62,7 +62,6 @@ require('../inc/navbar.php');
                     <input type="text" class="form-control border-solid border-2 rounded-md  w-full p-2" id="exampleInputEmail1" name="site_value" placeholder="">
                   </div>
                 
-                
                 <!-- /.card-body -->
 
                 <div class="card-footer">

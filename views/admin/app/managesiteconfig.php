@@ -23,7 +23,7 @@ require('../inc/navbar.php');
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" width="100%" class="table table-bordered table-striped">
+                        <table id="example1" width="100%" class="table table-bordered table-striped ">
                             <thead>
                                 <tr>
                                     <th>S.N.</th>
@@ -47,7 +47,7 @@ require('../inc/navbar.php');
 
                                         <td><?php echo $data['site_key']; ?></td>
                                         
-                                        <td><?php echo $data['site_value']; ?></td>
+                                        <td ><?php echo $data['site_value']; ?></p></td>
                                         <td>
                                             <a class="btn btn-primary p-2" " href="editsiteconfig.php?id=<?php echo $data['id']; ?>" role="button">Edit</a>
                                             <a name="" id="" class="btn btn-danger btn-xs" href="../process/deletesiteconfig.php?id=<?php echo $data['id']; ?>" role="button">Delete</a>
