@@ -2,7 +2,7 @@
 include '../layouts/header.php'
 ?>
 <header>
-    <nav class="navigation bg-transparent z-50 w-full fixed">
+    <nav class="navigation bg-transparent z-50 top-0 w-full fixed">
         <div class=" header_wrapper flex justify-between mx-10">
             <div class="logo w-48 -mt-7 ml-12  ">
                 <img src="../../public/logo.png" alt="">
@@ -11,7 +11,7 @@ include '../layouts/header.php'
                 <ul class="flex justify-evenly space-x-5 mt-5 text-lg font-semibold">
                     <li class="p-2 hover:text-teal-500 "><a href="../app/">Home</a> </li>
                     <li class="p-2 hover:text-teal-500"><a href="../app/article.php"> Article</a></li>
-                    <li class="p-2 hover:text-teal-500"><a href="">About Us</a> </li>
+                    <!-- <li class="p-2 hover:text-teal-500"><a href="">About Us</a> </li> -->
                     <li class="p-2 hover:text-teal-500"><a href="../app/#contact">Contact</a> </li>
                     <li class="p-2 hover:text-teal-500"><a href="../app/#faqs">FAQ</a> </li>
                 </ul>

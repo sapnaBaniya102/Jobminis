@@ -27,7 +27,7 @@ if(isset($_GET['id'])) {
     <?php
     require('../inc/sidebar.php')
     ?>
-     <section class="content w-full h-full" >
+     <section class="content w-4/6 mt-28 ml-96 h-full" >
           <!-- left column -->
           <div class="">
             <!-- general form elements -->

@@ -11,7 +11,7 @@ require('../inc/navbar.php');
   require('../inc/sidebar.php')
   ?>
   <!-- end sidbar -->
-<div class="candidate-list-wrapper bg-white">
+<div class="candidate-list-wrapper  w-4/6 mt-28 ml-96 h-full bg-white">
     <div class="candidate-list-header w-full bg-teal-50 p-24 mt-8">             
         <h1 class="text-5xl font-bold mb-4">Search Candidate</h1>
         <span class="text-lg text-gray-600">Work with the most suitable candidates in the world</span>

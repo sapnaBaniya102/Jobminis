@@ -3,14 +3,14 @@ include 'header.php'
 ?>
 <!-- start sidebar -->
 
-<div class="h-screen w-3/12 bg-white">
+<div class="h-full w-3/12 fixed -translate-x-4 bg-white">
 
 	<aside class="" aria-label="Sidebar">
-		<div class="py-48 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800">
+		<div class="py-48 overflow-y-auto  rounded bg-white dark:bg-gray-800">
       
 			<ul class="space-y-2 ml-8">
 				<li>
-					<a href="#"
+					<a href="../app/dashboard.php"
 						class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
 						<svg class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
 							fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,7 @@ include 'header.php'
                   <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Files</span>
                   <svg sidebar-toggle-item class="w-6 h-6 mr-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
-					<ul id="files" class="hidden py-2 space-y-2 ml-8">
+					<ul id="files" class="hidden py-2 space-y-2">
 						<li>
 							<a href="../app/uploadfile.php"
 								class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Upload</a>
@@ -44,7 +44,7 @@ include 'header.php'
                   <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Site Config</span>
                   <svg sidebar-toggle-item class="w-6 h-6 mr-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
-					<ul id="site-config" class="hidden py-2 space-y-2 ml-8">
+					<ul id="site-config" class="hidden py-2 space-y-2 ">
 						<li>
 							<a href="../app/addsiteconfig.php"
 								class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Add Site Config</a>
@@ -62,7 +62,7 @@ include 'header.php'
                   <span class="flex-1 ml-5 text-left whitespace-nowrap" sidebar-toggle-item>Slider</span>
                   <svg sidebar-toggle-item class="w-6 h-6 mr-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
-					<ul id="slider" class="hidden py-2 space-y-2 ml-8">
+					<ul id="slider" class="hidden py-2 space-y-2">
 						<li>
 							<a href="../app/addslider.php"
 								class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">Add Slider</a>

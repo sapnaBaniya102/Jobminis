@@ -49,9 +49,11 @@ include '../connection/config.php';
 
                 </div>
                 <div class="photo_icon col-span-1 w-full pl-48">
-                    <div class="photo_content absolute top-28 w-1/5 rounded-3xl bg-gradient-to-b from-zinc-800 z-20 to-gray-200 h-3/6">
-                        <img src="../admin/uploads/<?php echo $data['img']; ?>" class="py-16" alt="" width="1000">
+                    <div class="photo_content absolute top-28 w-1/5 rounded-3xl bg-gradient-to-b from-zinc-800 z-50 to-gray-200 h-3/6">
+                        <img src="../admin/uploads/image-removebg-preview(5)1655989739.png" class="py-16" alt="" width="1000">
+                       
                     </div>
+
                     <div class="div1 w-1/5 origin-bottom-left z-10 rotate-6 rounded-3xl h-3/6 bg-blue-900 absolute top-28"></div>
                     <div class="div2 w-1/5 origin-bottom-left rotate-12 rounded-3xl h-3/6 bg-teal-700 absolute top-28"></div>
                 </div>
@@ -455,12 +457,13 @@ include '../connection/config.php';
                             $phone = $_POST['phone'];
                             $message = $_POST['message'];
                             if ($name != "" && $email != "" && $phone != "" && $message != "") {
-                                $query = "INSERT INTO contacts (name,email,phone,message) VALUES('$name','$email','$phone','$message')";
+                                $query = "INSERT INTO contact (name,email,phone,message) VALUES('$name','$email','$phone','$message')";
                                 $result = mysqli_query($conn, $query);
                                 if ($result) {
                         ?>
-                                    <div class="bg-gray-100 text-center p-2 mt-2">
-                                        <p>Contact is added successfully.</p>
+                                    <div class="bg-teal-100 fixed right-0 bottom-16 rounded-xl p-3 mt-2 transform ease-in-out -translate-x-1 scale-110 duration-700 transition delay-300">
+                                        <p class="text-base font-bold">Success</p>
+                                        <p class="text-sm text-gray-400">Contact is added successfully.</p>
                                     </div>
                         <?php
                                 } else {

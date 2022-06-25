@@ -5,7 +5,7 @@
                 <div class="logo w-48 -mt-7">
                     <img src="../../public/logo.png" alt="">
                 </div>
-                <div class="flex space-x-3">
+                <div class="flex space-x-3 mt-7">
                     <h1 class="font-bold text-white">Contact Us on</h1> <span class="text-teal-200">(123) 234-7150</span>
                 </div>
                 <div class="logo-link text-black mt-2">

@@ -1,47 +1,7 @@
 <?php
 include ('../layouts/header.php');
 require('../connection/config.php');
-
-                                        if(isset($_GET['msg'])){
-                                            $msg= $_GET['msg'];
-                                            if($msg=='loginerror')
-                                            {
-                                               ?>
-                                                       <div class="alert alert-danger alert-dismissible fade show "  role="alert">
-                                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                         <span aria-hidden="true">&times;</span>
-                                                         </button>
-                                                         <strong>Your credentials are not matched.</strong> 
-                                                         </div>
-                        
-                                                         <script>
-                                                            $(".alert").alert();
-                                                        </script>
-                                               <?php
-                                            }
-                                        }
-                                        ?>
-
-                                        <?php
-                                        if(isset($_GET['msg'])){
-                                            $msg= $_GET['msg'];
-                                            if($msg=='invaliduser')
-                                            {
-                                               ?>
-                                                       <div class="alert alert-danger alert-dismissible fade show"  role="alert">
-                                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                         <span aria-hidden="true">&times;</span>
-                                                         </button>
-                                                         <strong>You are invalid user You need permission to access those pages. Please first login.</strong> 
-                                                         </div>
-                        
-                                                         <script>
-                                                            $(".alert").alert();
-                                                        </script>
-                                               <?php
-                                            }
-                                        }
-                                        ?>
+?>
 
 <body>
     <div class="container mt-28">
@@ -54,6 +14,44 @@ require('../connection/config.php');
                     <div class="text-center ">
                         <h4 class="text-3xl font-semibold mt-1 mb-12 pb-1 ">Sign In</h4>
                     </div>
+                    <?php
+                    if (isset($_GET['msg'])) {
+                        if ($_GET['msg']=='error') {
+                            # code...
+                        
+                        # code...
+                    ?>
+
+                               <div class="alert text-white text-sm bg-red-400 p-3 mx-10 rounded-md my-4 alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>Please provide valid email and password</strong> 
+                                    </div>
+                                    
+                                    <script>
+                                      $(".alert").alert();
+                                    </script>
+                                    <?php
+                                    }
+                                    if ($_GET['msg']=="loginerror") {
+                                        # code...
+                                        ?>
+                                           <div class="alert text-sm text-white mx-10 bg-red-400 p-3 rounded-md my-4 alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>Your email or credentials are not matched.</strong> 
+                                    </div>
+                                    
+                                    <script>
+                                      $(".alert").alert();
+                                    </script>
+                                        <?php
+                                    }
+                                
+                                    }
+?>
                     <form class="user"  action="../process/loginprocess.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-4 ">
                             <input type="email " name="email" class="form-control block w-full rounded-full px-3 py-5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out m-0 focus:text-gray-700

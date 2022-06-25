@@ -2,15 +2,16 @@
 require('../../connection/config.php');
 require('../inc/header.php');
 require('../inc/navbar.php');
+require('../inc/sidebar.php')
 ?>
 
 
 
 <!-- strat wrapper -->
-<div class="h-screen flex flex-row flex-wrap">
+<div class="h-1/2 flex w-10/12 absolute right-0 top-8 flex-row flex-wrap">
   <!-- start sidebar -->
   <?php
-  require('../inc/sidebar.php')
+ 
   ?>
   <!-- end sidbar -->
   <!-- strat content -->

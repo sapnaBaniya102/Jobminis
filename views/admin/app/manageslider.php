@@ -11,7 +11,7 @@ require('../inc/navbar.php');
     <?php
     require('../inc/sidebar.php')
     ?>
-    <section class="content">
+    <section class="content w-4/6 mt-28 ml-96 h-full">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <a href="addslider.php"> <button class="btn btn-primary p-2" style="margin-left:1110px;">Add</button></a>
@@ -41,13 +41,13 @@ require('../inc/navbar.php');
                   {
                     $sn+=1; //$sn = $sn+1
                     ?>
-                  <tr>
+                  <tr >
                     <td><?php echo $sn; ?></td>
                     <td><?php echo $data['name']; ?></td>
                     <td> <img src="../uploads/<?php echo $data['img'];?>" alt="" height="80px;" width="80px;"></td>
                     <td>
-                        <a name="" id="" class="btn btn-primary btn-sm" href="editslider.php?id=<?php echo $data['id']; ?>" role="button">Edit</a>
-                        <a name="" id="" class="btn btn-danger btn-xl" href="../process/deleteslider.php?id=<?php echo $data['id']; ?>" role="button">Delete</a>
+                        <a name="" id="" class="btn btn-primary w-5/6 btn-sm" href="editslider.php?id=<?php echo $data['id']; ?>" role="button">Edit</a>
+                        <a name="" id="" class="btn btn-danger w-5/6 btn-xl" href="../process/deleteslider.php?id=<?php echo $data['id']; ?>" role="button">Delete</a>
                     </td>
                   </tr>
                     <?php

@@ -24,7 +24,7 @@ include '../layouts/nav.php'
                         <div class="card-body p-7 space-y-2">
                             <h1 class="text-lg font-semibold">How to start looking for a job</h1>
                             <p class="text-sm font-light text-gray-500 truncate">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur</p>
-                            <button class="pt-8 text-blue-700 hover:text-black">Read More</button>
+                            <a href="../app/articleDetail.php"><button class="pt-8 text-blue-700 hover:text-black">Read More</button></a>
                         </div>
                     </div>
                     <div class="card border border-gray-400 rounded-3xl">
@@ -40,7 +40,7 @@ include '../layouts/nav.php'
                         <div class="card-body p-7 space-y-2">
                             <h1 class="text-lg font-semibold">How to start looking for a job</h1>
                             <p class="text-sm font-light text-gray-500 truncate">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur</p>
-                            <button class="pt-8 text-blue-700 hover:text-black">Read More </button>
+                            <a href="../app/articleDetail.php"><button class="pt-8 text-blue-700 hover:text-black">Read More</button></a>
                         </div>
                     </div>
                     <div class="card border border-gray-400 rounded-3xl">
@@ -56,7 +56,7 @@ include '../layouts/nav.php'
                         <div class="card-body p-7 space-y-2">
                             <h1 class="text-lg font-semibold">How to start looking for a job</h1>
                             <p class="text-sm font-light text-gray-500 truncate">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur</p>
-                            <button class="pt-8 text-blue-700 hover:text-black">Read More</button>
+                            <a href="../app/articleDetail.php"><button class="pt-8 text-blue-700 hover:text-black">Read More</button></a>
                         </div>
                     </div>
 

@@ -11,7 +11,7 @@ require('../inc/navbar.php');
     <?php
     require('../inc/sidebar.php')
     ?>
-    <section class="content">
+    <section class="content w-4/6 mt-28 ml-96 h-full">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <a href="addsiteconfig.php"> <button class="btn btn-primary p-2" style="margin-left:1110px;">Add</button></a>
@@ -41,16 +41,16 @@ require('../inc/navbar.php');
                                 while ($data = mysqli_fetch_array($result)) {
                                     $sn += 1; //$sn = $sn+1
                                 ?>
-                                    <tr>
+                                    <tr class="ml-2 text-center">
                                         <td><?php echo $sn; ?></td>
                                         <td><?php echo $data['name']; ?></td>
 
-                                        <td><?php echo $data['site_key']; ?></td>
+                                        <td ><p class="w-56 truncate"><?php echo $data['site_key']; ?></p></td>
                                         
-                                        <td ><?php echo $data['site_value']; ?></p></td>
-                                        <td>
-                                            <a class="btn btn-primary p-2" " href="editsiteconfig.php?id=<?php echo $data['id']; ?>" role="button">Edit</a>
-                                            <a name="" id="" class="btn btn-danger btn-xs" href="../process/deletesiteconfig.php?id=<?php echo $data['id']; ?>" role="button">Delete</a>
+                                        <td  ><p class="w-56 truncate"><?php echo $data['site_value']; ?></p></td>
+                                        <td class="flex space-x-1">
+                                            <a class="btn btn-primary p-1 px-2" " href="editsiteconfig.php?id=<?php echo $data['id']; ?>" role="button"><i class="fa-solid fa-pen"></i></a>
+                                            <a name="" id="" class="btn btn-danger btn-xs p-1 px-2" href="../process/deletesiteconfig.php?id=<?php echo $data['id']; ?>" role="button"><i class="fa-solid fa-trash"></i></a>
                                         </td>
 
                                     </tr>
