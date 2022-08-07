@@ -16,7 +16,16 @@ if (isset($_POST['submit'])) {
             
             $result = mysqli_query($conn, $user);
             if ($result) {
-                $_SESSION["userId"] = 12;
+                $userQuery ="SELECT id from `user` WHERE email='$email'";
+                $userResult = mysqli_query($conn, $userQuery);
+                if ($userResult) {
+                    # code...
+                    $row=mysqli_fetch_assoc($userResult);
+                   
+                    $_SESSION["userId"] = $row['id'];
+                    $_SESSION["email"] = $row['email'];
+                }
+                
                 $credentialsType = "password";
                 $v = "null";
                 $active = "false";
@@ -86,6 +95,43 @@ if (isset($_POST['account'])) {
         
     $result = mysqli_query($conn, $accountQuery);
     if ($result) {
+        $id =  $_SESSION["userId"];
+
+            //assign permission
+            $permissionQuery = "SELECT v2 FROM `permissions` WHERE v0 = '$id'";
+            $permissionResult = mysqli_query($conn, $permissionQuery);
+           
+            if ($permissionResult) {
+                # code...
+                $row = mysqli_fetch_assoc($permissionResult);
+                if ($row['v2'] == 'job-provider' || $row['v2'] == 'job-seeker') {
+                    # code...
+                   if ($row['v2'] == 'job-provider') {
+                    # code...
+                    $_SESSION['role'] = "job-provider";
+                   }
+                   else {
+                    # code...
+                    $_SESSION['role'] = "job-seeker";
+                   }
+?>
+
+                    <meta http-equiv="refresh" content="0;url=../user/app/dashboard.php">
+                <?php
+                } elseif ($row['v2'] == 'admin') {
+                    # code...
+                    $_SESSION['role'] = "admin";
+                ?>
+                    <meta http-equiv="refresh" content="0;url=../admin/app/index.php">
+                <?php
+                } else {
+                   
+
+                ?>
+                    <meta http-equiv="refresh" content="0;url=../app/index.php">
+<?php
+                }
+            }
         echo header("Location:../admin/app/dashboard.php");
     }
     else {

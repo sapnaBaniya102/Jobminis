@@ -6,11 +6,14 @@ module.exports = {
     // './views/landing/*.html',
     './views/**/*.php',
     './public/js/*.js',
+    "./node_modules/flowbite/**/*.js"
 ],
   theme: {
     extend: {
     },
   },
  
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+]
 }

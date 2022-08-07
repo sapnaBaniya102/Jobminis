@@ -8,9 +8,7 @@ require('../inc/navbar.php');
 <!-- strat wrapper -->
 <div class="h-screen flex flex-row">
     <!-- start sidebar -->
-    <?php
-    require('../inc/sidebar.php')
-    ?>
+  
      <section class="content w-4/6 mt-28 ml-96  h-full" >
           <!-- left column -->
           <div class="">
