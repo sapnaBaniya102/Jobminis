@@ -2,6 +2,9 @@
 require('../connection/config.php');
 session_start();
 
+$skill = $_POST["skills"];
+echo $skill;
+
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
@@ -112,6 +115,7 @@ if (isset($_POST['account'])) {
                    }
                    else {
                     # code...
+                    echo header("Location:../auth/signup.php#skillSelect");
                     $_SESSION['role'] = "job-seeker";
                    }
 ?>

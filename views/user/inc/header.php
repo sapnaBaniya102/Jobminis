@@ -11,7 +11,21 @@
     <link rel="stylesheet" href="../../../public/styles/nav.css">
     <script src="https://kit.fontawesome.com/6daaebb091.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
 
+    <style>
+    .top-100 {top: 100%}
+    .bottom-100 {bottom: 100%}
+    .max-h-select {
+        max-height: 300px;
+    }
+</style>
 </head>
 <body class="bg-gray-100">
 

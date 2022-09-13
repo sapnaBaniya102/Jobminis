@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="../../dist/css/landing.css">
     <link rel="stylesheet" href="../../public/styles/nav.css">
     <script src="https://kit.fontawesome.com/6daaebb091.js" crossorigin="anonymous"></script>
-   
+    <style>
+    .top-100 {top: 100%}
+    .bottom-100 {bottom: 100%}
+    .max-h-select {
+        max-height: 300px;
+    }
+</style>
 
 
 </head>

@@ -1,10 +1,10 @@
 -- -------------------------------------------------------------
--- TablePlus 4.6.2(410)
+-- TablePlus 4.8.2(436)
 --
 -- https://tableplus.com/
 --
 -- Database: jobMinis
--- Generation Time: 2022-08-07 2:58:11.1820 PM
+-- Generation Time: 2022-09-13 1:07:46.0820 PM
 -- -------------------------------------------------------------
 
 
@@ -28,7 +28,7 @@ CREATE TABLE `account` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `account_profiles`;
 CREATE TABLE `account_profiles` (
@@ -40,7 +40,7 @@ CREATE TABLE `account_profiles` (
   `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `addresses`;
 CREATE TABLE `addresses` (
@@ -55,7 +55,7 @@ CREATE TABLE `addresses` (
   `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` (
@@ -84,7 +84,7 @@ CREATE TABLE `credentials` (
   `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `files`;
 CREATE TABLE `files` (
@@ -95,8 +95,24 @@ CREATE TABLE `files` (
   `status` varchar(255) NOT NULL DEFAULT 'Active',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type` varchar(255) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DROP TABLE IF EXISTS `galleries`;
+CREATE TABLE `galleries` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `link` text,
+  `status` varchar(255) DEFAULT NULL,
+  `is_active` varchar(255) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `job_category`;
 CREATE TABLE `job_category` (
@@ -106,7 +122,7 @@ CREATE TABLE `job_category` (
   `status` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `job_details`;
 CREATE TABLE `job_details` (
@@ -129,7 +145,7 @@ CREATE TABLE `job_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `job_type_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `job_type`;
 CREATE TABLE `job_type` (
@@ -139,7 +155,7 @@ CREATE TABLE `job_type` (
   `status` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `login_sessions`;
 CREATE TABLE `login_sessions` (
@@ -167,12 +183,12 @@ CREATE TABLE `permissions` (
   `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255) NOT NULL,
+  `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `middle_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -181,8 +197,10 @@ CREATE TABLE `profile` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int DEFAULT NULL,
+  `bio` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `profile_addresses`;
 CREATE TABLE `profile_addresses` (
@@ -197,7 +215,7 @@ CREATE TABLE `profile_addresses` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `siteconfig`;
 CREATE TABLE `siteconfig` (
@@ -210,6 +228,17 @@ CREATE TABLE `siteconfig` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DROP TABLE IF EXISTS `skills`;
+CREATE TABLE `skills` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `is_Active` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `sliders`;
 CREATE TABLE `sliders` (
@@ -226,6 +255,12 @@ CREATE TABLE `sliders` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+DROP TABLE IF EXISTS `untitled_table_20`;
+CREATE TABLE `untitled_table_20` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -234,7 +269,47 @@ CREATE TABLE `user` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DROP TABLE IF EXISTS `user_details`;
+CREATE TABLE `user_details` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `information` longtext,
+  `job_category_id` int DEFAULT NULL,
+  `size` int DEFAULT NULL,
+  `founded_at` int DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `address_id` int DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DROP TABLE IF EXISTS `user_setting`;
+CREATE TABLE `user_setting` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `link_key` varchar(255) DEFAULT NULL,
+  `link_value` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DROP TABLE IF EXISTS `user_skill`;
+CREATE TABLE `user_skill` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `skill_id` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `account` (`id`, `user_name`, `slug`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'astha123', 'astha123', 'false', '2022-06-23 19:02:51', '2022-06-23 19:02:51', '2022-06-23 19:02:51'),
@@ -242,7 +317,15 @@ INSERT INTO `account` (`id`, `user_name`, `slug`, `is_active`, `created_at`, `up
 (3, 'sapnabaniya', 'sapnabaniya', 'false', '2022-06-26 07:16:12', '2022-06-26 07:16:12', '2022-06-26 07:16:12'),
 (4, 'astha', 'astha', 'false', '2022-08-06 17:03:56', '2022-08-06 17:03:56', '2022-08-06 17:03:56'),
 (5, 'simran', 'simran', 'false', '2022-08-06 17:19:10', '2022-08-06 17:19:10', '2022-08-06 17:19:10'),
-(6, 'simran1', 'simran1', 'false', '2022-08-06 17:20:21', '2022-08-06 17:20:21', '2022-08-06 17:20:21');
+(6, 'simran', 'simran1', 'false', '2022-08-06 17:20:21', '2022-08-06 17:20:21', '2022-08-06 17:20:21'),
+(7, 'simran1@gmail.com', 'simran1@gmail.com', 'false', '2022-09-06 14:30:11', '2022-09-06 14:30:11', '2022-09-06 14:30:11'),
+(8, 'simran1@gmail.com', 'simran1@gmail.com', 'false', '2022-09-07 08:53:06', '2022-09-07 08:53:06', '2022-09-07 08:53:06');
+
+INSERT INTO `account_profiles` (`id`, `account_id`, `profile_id`, `is_active`, `created_at`, `deleted_at`, `updated_at`) VALUES
+(1, 6, 1, 'true', '2022-09-12 12:12:55', '2022-09-12 12:12:55', '2022-09-12 12:12:55');
+
+INSERT INTO `addresses` (`id`, `state`, `street`, `city`, `country`, `zip_code`, `is_active`, `created_at`, `deleted_at`, `updated_at`) VALUES
+(1, 'narayani', 'ganestole', 'pokhara', 'nepal', '33700', 'true', '2022-09-12 12:19:05', '2022-09-12 12:19:05', '2022-09-12 12:19:05');
 
 INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `message`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'sapna', 'sapna123@gmail.com', '374267365742', 'this is the testing message', NULL, '2022-06-24 07:14:56', '2022-06-24 07:14:56', '2022-06-24 07:14:56'),
@@ -274,15 +357,43 @@ INSERT INTO `credentials` (`id`, `credentials_type`, `user_id`, `k`, `e`, `v`, `
 (8, 'password', 27, '27', '7d6a5c1eeca24942a5a4987a1998dc3f', 'null', 'false', '2022-06-26 07:16:04', '2022-06-26 07:16:04', '2022-06-26 07:16:04'),
 (9, 'password', 28, '28', 'b1eb4d0b383339a26c16c5a9253c1188', 'null', 'false', '2022-08-06 17:03:22', '2022-08-06 17:03:22', '2022-08-06 17:03:22'),
 (10, 'password', 30, '30', '9b16eb2704cead43ecf04dd665908205', 'null', 'false', '2022-08-06 17:19:02', '2022-08-06 17:19:02', '2022-08-06 17:19:02'),
-(11, 'password', 31, '31', '1a044483e26e3ae95e7c853e05daac5b', 'null', 'false', '2022-08-06 17:20:13', '2022-08-06 17:20:13', '2022-08-06 17:20:13');
+(11, 'password', 31, '31', '1a044483e26e3ae95e7c853e05daac5b', 'null', 'false', '2022-08-06 17:20:13', '2022-08-06 17:20:13', '2022-08-06 17:20:13'),
+(12, 'password', 32, '32', 'b1eb4d0b383339a26c16c5a9253c1188', 'null', 'false', '2022-09-06 14:30:02', '2022-09-06 14:30:02', '2022-09-06 14:30:02'),
+(13, 'password', 33, '33', '91bbc32e8590ecc8765d88330bea92b6', 'null', 'false', '2022-09-07 08:53:03', '2022-09-07 08:53:03', '2022-09-07 08:53:03');
 
-INSERT INTO `files` (`id`, `name`, `filelink`, `ext`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Photo', '21655969402.png', 'png', 'Active', '2022-06-23 13:15:02', '2022-06-23 13:15:02'),
-(3, 'frontpage', 'image-removebg-preview(5)1656035304.png', 'png', 'Active', '2022-06-24 07:33:24', '2022-06-24 07:33:24');
+INSERT INTO `files` (`id`, `name`, `filelink`, `ext`, `status`, `created_at`, `updated_at`, `type`, `user_id`) VALUES
+(2, 'Photo', '21655969402.png', 'png', 'Active', '2022-06-23 13:15:02', '2022-06-23 13:15:02', 'gallery', 31),
+(3, 'frontpage', 'image-removebg-preview(5)1656035304.png', 'png', 'Active', '2022-06-24 07:33:24', '2022-06-24 07:33:24', 'gallery', 31),
+(4, 'sapna cv', 'a2zlibrary.png - 2022.09.13 - 07.08.26am09.png', 'png', 'Active', '2022-09-13 12:53:26', '2022-09-13 12:53:26', 'cv', 31),
+(5, 'sapna', 'Github_Command.docx - 2022.09.13 - 07.19.03am09.docx', 'docx', 'Active', '2022-09-13 13:04:03', '2022-09-13 13:04:03', 'cv', 31),
+(6, 'sapna', 'Github_Command.docx - 2022.09.13 - 07.22.16am09.docx', 'docx', 'Active', '2022-09-13 13:07:16', '2022-09-13 13:07:16', 'cv', 31);
+
+INSERT INTO `galleries` (`id`, `link`, `status`, `is_active`, `user_id`, `created_at`, `deleted_at`, `name`, `type`) VALUES
+(1, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.41.47am09.jpg', NULL, NULL, 31, NULL, NULL, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.41.47am09.jpg', 'background-image'),
+(2, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 06.48.24am09.jpg', NULL, NULL, NULL, NULL, NULL, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 06.48.24am09.jpg', 'background-image'),
+(3, 'viber_image_2022-09-04_18-28-25-567.jpg - 2022.09.09 - 07.25.20am09.jpg', NULL, NULL, NULL, NULL, NULL, 'viber_image_2022-09-04_18-28-25-567.jpg - 2022.09.09 - 07.25.20am09.jpg', 'background-image'),
+(4, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.25.46am09.jpg', NULL, NULL, NULL, NULL, NULL, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.25.46am09.jpg', 'background-image'),
+(5, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.26.07am09.jpg', NULL, NULL, NULL, NULL, NULL, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.26.07am09.jpg', 'background-image'),
+(6, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.37.03am09.jpg', NULL, NULL, NULL, NULL, NULL, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.37.03am09.jpg', 'background-image'),
+(7, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.39.28am09.jpg', NULL, NULL, NULL, NULL, NULL, 'viber_image_2022-09-04_18-28-14-522.jpg - 2022.09.09 - 07.39.28am09.jpg', 'background-image'),
+(8, '274626508_990943381823685_519734290069302601_n.jpeg - 2022.09.09 - 07.57.02am09.jpeg', NULL, NULL, 31, NULL, NULL, '274626508_990943381823685_519734290069302601_n.jpeg - 2022.09.09 - 07.57.02am09.jpeg', 'profile');
+
+INSERT INTO `job_category` (`id`, `category`, `is_active`, `status`, `created_at`) VALUES
+(1, 'data scientist', 'active', 'true', '2022-09-08 16:28:12'),
+(2, 'software engineer', 'active', 'true', '2022-09-08 16:28:12'),
+(3, 'software developer', 'active', 'true', '2022-09-08 16:28:12'),
+(4, 'civil engineer', 'active', 'true', '2022-09-08 16:28:12'),
+(5, 'data entry', 'active', 'true', '2022-09-08 16:28:12'),
+(6, 'advisor', 'active', 'true', '2022-09-08 16:28:12');
 
 INSERT INTO `job_details` (`id`, `user_id`, `title`, `job_category_id`, `contact_person`, `email`, `phone`, `date`, `description`, `skill`, `experience`, `availability`, `language`, `salary`, `is_active`, `status`, `created_at`, `job_type_id`) VALUES
-(1, 31, 'Et consectetur expl', 2, 'Nostrud voluptatem s', 'lakovi@mailinator.com', '+1 (707) 349-4602', '1973-11-01', 'Enim quo et est sit', 'Ut ullamco modi quia', 'Aliquam cumque eos a', 'Perferendis reprehen', 'Sunt labore et in co', 54, 'true', 'true', NULL, 1),
-(2, 31, 'software developer', 2, 'Sapna baniya', 'baniyasapna4@gmail.com', '+1 (743) 543-5731', '2022-08-11', 'I am hiring a software developer for my project', 'Laravel, nodejs', 'minimum 1 yrs', 'available', '', 10000, 'true', 'true', NULL, 2);
+(1, 21, 'Et consectetur expl', 2, 'Nostrud voluptatem s', 'lakovi@mailinator.com', '+1 (707) 349-4602', '1973-11-01', 'Enim quo et est sit', 'Ut ullamco modi quia', 'Aliquam cumque eos a', 'Perferendis reprehen', 'Sunt labore et in co', 54, 'true', 'true', NULL, 1),
+(2, 21, 'software developer', 2, 'Sapna baniya', 'baniyasapna4@gmail.com', '+1 (743) 543-5731', '2022-08-11', 'I am hiring a software developer for my project', 'Laravel, nodejs', 'minimum 1 yrs', 'available', '', 10000, 'true', 'true', NULL, 2),
+(3, 21, 'Project Manager', 2, 'Rajhu ram', 'baniyasapna4@gmail.com', '9811111111', '2022-09-17', 'we need a prominent and experienced project manager.', 'good communication, problem solving', '3 years', 'true', 'English, Nepali', 30000, 'true', 'true', NULL, 2);
+
+INSERT INTO `job_type` (`id`, `type`, `is_active`, `status`, `created_at`) VALUES
+(1, 'hourly', 'active', 'true', '2022-09-08 16:26:07'),
+(2, 'monthly', 'active', 'true', '2022-09-08 16:26:07');
 
 INSERT INTO `permissions` (`id`, `p_type`, `v0`, `v1`, `v2`, `is_active`, `created_at`, `deleted_at`, `updated_at`) VALUES
 (1, 'g', '0', 'job-provider', 'job-provider', 'false', '2022-06-23 18:52:56', '2022-06-23 18:52:56', '2022-06-23 18:52:56'),
@@ -295,7 +406,17 @@ INSERT INTO `permissions` (`id`, `p_type`, `v0`, `v1`, `v2`, `is_active`, `creat
 (8, 'g', '12', 'job-provider', 'job-provider', 'false', '2022-06-26 07:16:28', '2022-06-26 07:16:28', '2022-06-26 07:16:28'),
 (9, 'g', '12', 'job-provider', 'job-provider', 'false', '2022-08-06 17:10:39', '2022-08-06 17:10:39', '2022-08-06 17:10:39'),
 (10, 'g', 'Array', 'job-seeker', 'job-seeker', 'false', '2022-08-06 17:19:12', '2022-08-06 17:19:12', '2022-08-06 17:19:12'),
-(11, 'g', '31', 'job-seeker', 'job-seeker', 'false', '2022-08-06 17:20:22', '2022-08-06 17:20:22', '2022-08-06 17:20:22');
+(11, 'g', '31', 'job-seeker', 'job-seeker', 'false', '2022-08-06 17:20:22', '2022-08-06 17:20:22', '2022-08-06 17:20:22'),
+(12, 'g', '25', 'job-seeker', 'job-seeker', 'false', '2022-09-06 14:30:16', '2022-09-06 14:30:16', '2022-09-06 14:30:16'),
+(13, 'g', '25', 'job-seeker', 'job-seeker', 'false', '2022-09-06 15:02:50', '2022-09-06 15:02:50', '2022-09-06 15:02:50'),
+(14, 'g', '25', 'job-seeker', 'job-seeker', 'false', '2022-09-06 15:02:57', '2022-09-06 15:02:57', '2022-09-06 15:02:57'),
+(15, 'g', '21', 'job-provider', 'job-seeker', 'false', '2022-09-07 08:53:08', '2022-09-07 08:53:08', '2022-09-07 08:53:08');
+
+INSERT INTO `profile` (`id`, `first_name`, `middle_name`, `last_name`, `email`, `email_verified`, `is_active`, `created_at`, `deleted_at`, `updated_at`, `user_id`, `bio`) VALUES
+(1, 'sapna', 'kumari', 'baniy1', 'skyrootmam123@gmail.com', 'true', 'true', '2022-09-12 11:08:28', '2022-09-12 11:08:28', '2022-09-12 11:08:28', 31, 'i am a girl');
+
+INSERT INTO `profile_addresses` (`id`, `profile_id`, `account_id`, `address_id`, `name`, `type`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 6, 1, 'sapna', 'job_seeker', 'true', '2022-09-12 12:19:56', '2022-09-12 12:19:56', '2022-09-12 12:19:56');
 
 INSERT INTO `siteconfig` (`id`, `name`, `site_key`, `site_value`, `status`, `created_at`, `updated_at`) VALUES
 (2, 'sahigi@mailinator.com', 'norek@mailinator.com', 'wiqew@mailinator.com', 'Active', '2022-06-23 16:17:53', '2022-06-23 16:17:53'),
@@ -339,7 +460,18 @@ INSERT INTO `user` (`id`, `email`, `status`, `created_at`, `updated_at`) VALUES
 (28, 'astha@gmail.com', 'inactive', '2022-08-06 17:03:22', '2022-08-06 17:03:22'),
 (29, 'simran@gmail.com', 'inactive', '2022-08-06 17:18:28', '2022-08-06 17:18:28'),
 (30, 'simran@gmail.com', 'inactive', '2022-08-06 17:19:02', '2022-08-06 17:19:02'),
-(31, 'simran1@gmail.com', 'inactive', '2022-08-06 17:20:13', '2022-08-06 17:20:13');
+(31, 'simran1@gmail.com', 'inactive', '2022-08-06 17:20:13', '2022-08-06 17:20:13'),
+(32, 'astha@gmail.com', 'inactive', '2022-09-06 14:30:02', '2022-09-06 14:30:02'),
+(33, 'baniyasapna4@gmail.com', 'inactive', '2022-09-07 08:53:03', '2022-09-07 08:53:03');
+
+INSERT INTO `user_details` (`id`, `name`, `user_id`, `information`, `job_category_id`, `size`, `founded_at`, `phone`, `email`, `address_id`, `status`, `created_at`, `deleted_at`) VALUES
+(1, 'orgware construct', 31, 'this is orgware construct', 2, 1000, 2000, NULL, 'orgware@gmail.com', NULL, 'true', NULL, NULL),
+(2, 'xdezo', 31, 'xdezo technology', 2, 500, NULL, NULL, 'xdezo@gmail.com', NULL, NULL, NULL, NULL);
+
+INSERT INTO `user_setting` (`id`, `user_id`, `link_key`, `link_value`, `created_at`, `deleted_at`, `status`) VALUES
+(1, 31, 'github', 'http://www.github.com', NULL, NULL, 'active'),
+(2, 31, 'linkedin', 'www.linkedin', NULL, NULL, 'active'),
+(3, 31, 'website', 'www.sapna.com', NULL, NULL, 'active');
 
 
 

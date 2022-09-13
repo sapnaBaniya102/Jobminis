@@ -1,6 +1,7 @@
 <?php
 include '../inc/header.php';
 require('../inc/navbar.php');
+require('../../connection/config.php');
 ?>
 
 <main>
@@ -99,8 +100,25 @@ require('../inc/navbar.php');
                                     <div class="text-sm text-gray-500 font-semibold">
                                 <label for="industry">Pick your industry</label>
                                 <select name="industry" id="" required class="w-full mt-2  rounded-md bg-gray-100 border-gray-200">
-                                    <option value="1">e-commerce</option>
-                                    <option value="2">software developer</option>
+                                    <option value="" selected>Choose an industry</option>
+                                    <?php
+                                    $industry_query ="SELECT * FROM job_category WHERE status= 'true'";
+                                    $industry_result = mysqli_query($conn,$industry_query);
+                                    if (mysqli_num_rows($industry_result)>0) {
+                                        # code...
+                                        while ($row1 = mysqli_fetch_assoc($industry_result)) {
+
+                                    ?>
+                                    <option value="<?php echo $row1['id']; ?>"><?php echo $row1['category']; ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    else {
+                                        ?>
+                                        <h1>industry not found</h1>
+                                        <?php
+                                    }
+                                        ?>
                                 </select>
                                 </div>
                                 <h1 class="font-bold text-lg">When do you want to see the results</h1>
@@ -135,9 +153,27 @@ require('../inc/navbar.php');
                                 <div class="flex space-x-3">
                                 <div class="text-sm text-gray-500 font-semibold">
                                 <label for="type">Job type</label>
-                                <select name="type" id="" required class="w-full mt-2  rounded-md bg-gray-100 border-gray-200">
-                                    <option value="1">hourly</option>
-                                    <option value="2">monthly</option>
+                                <select name="type" id="" required class="w-full mt-2  rounded-md bg-gray-100 text-sm border-gray-200">
+                                <option value="" class="text-xs">Choose a job type</option>
+                                <?php
+                                    $type_query ="SELECT * FROM job_type WHERE status= 'true'";
+                                    $type_result = mysqli_query($conn,$type_query);
+                                    if (mysqli_num_rows($type_result)>0) {
+                                        # code...
+                                        while ($row1 = mysqli_fetch_assoc($type_result)) {
+
+                                    ?>
+                                    
+                                    <option value="<?php echo $row1['id']; ?>"><?php echo $row1['type']; ?></option>
+                                    <?php 
+                                        }
+                                    }
+                                    else {
+                                        ?>
+                                        <h1>Job type not found</h1>
+                                        <?php
+                                    }
+                                    ?>
                                 </select>
                                 </div>
                                 <div class="text-sm text-gray-500 font-semibold">

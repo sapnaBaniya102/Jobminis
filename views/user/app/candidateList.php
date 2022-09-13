@@ -13,15 +13,9 @@ require('../inc/navbar.php');
   <div class="candidate-list-header w-full bg-teal-50 p-24 mt-8">             
         <h1 class="text-5xl font-bold mb-4">Search Candidate</h1>
         <span class="text-lg text-gray-600">Work with the most suitable candidates in the world</span>
-        <form  class="mt-10 bg-white rounded-full p-3 grid grid-cols-4 gap-3">
-            <input type="text" placeholder="Candidate Name" class="p-2 border-r ">
-            <input type="text" placeholder="Location" class="border-r p-2">
-            <select name="post" id="">
-                <option value="All industries" selected>All industries</option>
-                <option value="Project Manager" >Project Manager</option>
-                <option value="Finance" >Finance</option>
-                <option value="Human Resource" >Human Resource</option>
-            </select>
+        <form  class="mt-10 bg-white rounded-full p-1 grid grid-cols-3 gap-3 px-4">
+            <input type="text" placeholder="Candidate Name" class="p-3 rounded-xl border-none">
+            <input type="text" placeholder="Location" class="border-r p-2 border-none">
             <button type="submit" name="submit" class="bg-blue-800 mx-5 rounded-full  text-white font-semibold">Find Candidate</button>
         </form>
     </div>

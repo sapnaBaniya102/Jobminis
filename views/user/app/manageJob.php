@@ -22,8 +22,8 @@ $id = $_SESSION['userId'];
  <section class="content w-full ">
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
-      <a href="../app/newJob.php" class="absolute right-44 mt-4"> <button class="btn btn-primary p-2">Post New Job</button></a> 
-
+      <a href="../app/newJob.php" class="absolute right-80 mt-4"> <button class="btn btn-primary p-2">Post New Job</button></a> 
+<input type="text" name="search" id="search" class="absolute right-36 w-1/6 mt-4 rounded-lg" placeholder="Search Job title ..">
         <!-- left column -->
         <div class="col-md-12">
         <div class="card rounded-xl">
@@ -52,9 +52,9 @@ $id = $_SESSION['userId'];
                  
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="jobList">
                 <?php
-                              $query = "SELECT * FROM job_details  WHERE user_id ='$id' ";
+                              $query = "SELECT * FROM job_details  WHERE user_id ='$id' AND status='true' ";
                               $result = mysqli_query($conn, $query);
                               $count = mysqli_num_rows($result);
                             
@@ -116,6 +116,48 @@ $id = $_SESSION['userId'];
         </div>
     </div>
 </main>
+<script type="text/javascript" src="../../../dist/js/jQuery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+     
+        $("#search").keyup(function(){
+            var title = $(this).val();
+             if (title != "") {
+                $.ajax({
+                    url: "../process/job.php",
+                    method: "POST",
+                    data:{
+				        type: 1,
+                name: title,
+			},
+            success: function(data){
+              
+                $("#jobList").html(data);
+
+            }
+                });
+             }
+             else{
+                $.ajax({
+                    url: "../process/job.php",
+                    method: "POST",
+                    data:{
+				       type: 2,
+			},
+            success: function(data){
+              
+                $("#jobList").html(data);
+
+            }
+                });
+
+             }
+             
+        })
+
+    });
+
+</script>
 <?php
 include '../inc/footer.php'
 ?>
