@@ -69,7 +69,7 @@ $id =  $_SESSION['userId'];
         <a href="../app/setting.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-key pr-3"></i>Security and login</a>
       </li>
       <li>
-        <a href="#" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-right-from-bracket pr-3"></i>Log out</a>
+        <a href="../process/logout.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-right-from-bracket pr-3"></i>Log out</a>
       </li>
       <?php
 if ($role == "job-seeker") {
