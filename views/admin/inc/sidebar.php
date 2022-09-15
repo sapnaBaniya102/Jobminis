@@ -8,7 +8,7 @@ include 'header.php'
 
         <div class="px-8">
             <div class="h-20 w-full flex items-center">
-                <img src="../../../img/Add_a_subheading__1_-removebg-preview.png" class="text-white mt-10" alt="">
+                <img src="../../../public/assets/img/Add_a_subheading__1_-removebg-preview.png" class="text-white mt-10" alt="">
             </div>
             <ul class="mt-12">
                 <li class="flex w-full justify-between text-gray-300 cursor-pointer items-center mb-6">

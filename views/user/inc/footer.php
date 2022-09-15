@@ -1,12 +1,12 @@
 <!-- script -->
 
-<footer class="bg-teal-700">
+<footer class="bg-teal-700 w-full bottom-0">
         <div class="footer-container grid grid-cols-3 py-9 ">
             <div class="website-detail ml-20">
                 <div class="logo w-72 -mt-7">
                     <img src="../../../img/Jobminis-removebg-preview.png" alt="">
                 </div>
-                <div class="flex space-x-3 -mt-12">
+                <div class="flex space-x-3 mt-8">
                     <h1 class="font-bold text-white">Contact Us on</h1> <span class="text-teal-200">(123) 234-7150</span>
                 </div>
                 <div class="logo-link text-black mt-2">

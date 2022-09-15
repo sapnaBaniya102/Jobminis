@@ -7,7 +7,7 @@ require('../inc/navbar.php');
 
 
 <!-- strat wrapper -->
-<div class="h-1/2 flex w-full absolute right-0 top-8 flex-row flex-wrap">
+<div class="h-1/2 flex w-full right-0 top-8 flex-row flex-wrap">
   <!-- start sidebar -->
   <?php
  
@@ -18,13 +18,13 @@ require('../inc/navbar.php');
 
 
     <!-- General Report -->
-    <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-4">
 
 
       <!-- card -->
       <div class="report-card">
         <div class="card">
-          <div class="card-body flex flex-col">
+          <div class="card-body flex  flex-col">
 
             <!-- top -->
             <div class="flex flex-row justify-between items-center">
@@ -149,7 +149,7 @@ require('../inc/navbar.php');
 
           <!-- image -->
           <div class="img-wrapper w-40 h-40 flex justify-center items-center">
-            <img src="../../../img/happy.svg" alt="img title">
+            <img src="../../../public/assets/img/happy.svg" alt="img title">
           </div>
           <!-- end image -->
 

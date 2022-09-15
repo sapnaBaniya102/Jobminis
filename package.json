@@ -4,17 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "copy-html": "mkdir -p views/app && mv dist/index.html views/app/",
-    "optimize-svg": "svgo -f ./dist/assets",
-    "watch-landing": "tailwindcss -i ./public/styles/vendor.css -o ./dist/css/landing.css -w",
-    "build-landing": "tailwindcss -i ./public/styles/vendor.css -o ./dist/css/landing.css --minify",
-    "build": "pnpm watch-landing && pnpm build-landing && pnpm copy-html"
+    "copy-images": "mkdir -p ./public/assets && cp -r ./assets/img ./public/assets/img",
+    "copy-js": "mkdir -p ./public/assets && cp -r ./assets/js ./public/assets/js",
+    "watch": "pnpm copy-images && pnpm copy-js && tailwindcss -i ./assets/css/vendor.css -o ./public/assets/css/landing.css -w",
+    "build": "pnpm copy-images && pnpm copy-js && tailwindcss -i ./assets/css/vendor.css -o ./public/assets/css/landing.css --minify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.1.8"
   },
   "dependencies": {
     "@moesaid/cleopatra": "^1.1.1",

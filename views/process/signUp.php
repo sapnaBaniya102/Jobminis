@@ -2,6 +2,9 @@
 require('../connection/config.php');
 session_start();
 
+$skill = $_POST["skills"];
+ 
+
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
@@ -83,7 +86,7 @@ if (isset($_POST['account'])) {
     $p_type ="g";
     $role = "";
     $userId = $_SESSION["userId"];
-    if ($account == "work") {
+    if ($account === "work") {
         # code...
         $role ="job-seeker";
 
@@ -112,11 +115,11 @@ if (isset($_POST['account'])) {
                    }
                    else {
                     # code...
+                    echo header("Location:../auth/signup.php#skillSelect");
                     $_SESSION['role'] = "job-seeker";
                    }
 ?>
 
-                    <meta http-equiv="refresh" content="0;url=../user/app/dashboard.php">
                 <?php
                 } elseif ($row['v2'] == 'admin') {
                     # code...
@@ -132,7 +135,7 @@ if (isset($_POST['account'])) {
 <?php
                 }
             }
-        echo header("Location:../admin/app/dashboard.php");
+        // echo header("Location:../admin/app/dashboard.php");
     }
     else {
         echo header("Location:../auth/signup.php?msg=error#accountType");

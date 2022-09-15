@@ -2,6 +2,8 @@
 <?php
 require('../../connection/config.php');
 require('../inc/header.php');
+session_start();
+$id = $_SESSION['userId'];
 
 ?>
 
@@ -17,7 +19,7 @@ require('../inc/header.php');
   </div>
   <!-- end sidbar -->
   <!-- strat content -->
-  <div class="bg-gray-100 w-3/4 flex-auto pr-8 md:mt-16">
+  <div class="bg-gray-100 w-3   /4 flex-auto md:pr-8 md:mt-16">
 
 
   <div class=" flex flex-row flex-wrap">
@@ -26,7 +28,7 @@ require('../inc/header.php');
    <section class="content w-full ">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <a href="uploadfile.php" class="absolute right-16 top-20"> <button class="btn btn-primary p-2">Add</button></a> 
+        <a href="uploadfile.php" class="absolute right-16 mx-auto top-20"> <button class="btn btn-primary p-2">Add</button></a> 
 
           <!-- left column -->
           <div class="col-md-12">
@@ -44,6 +46,7 @@ require('../inc/header.php');
                     <th scope="col" class="py-3 px-6">S.N.</th>
                     <th scope="col" class="py-3 px-6">File Name</th>
                     <th scope="col" class="py-3 px-6">File Link</th>
+                    <th scope="col" class="py-3 px-6">Type</th>
                     <th scope="col" class="py-3 px-6">Images</th>
         
                     <th scope="col" class="py-3 px-6">Action</th>
@@ -51,7 +54,7 @@ require('../inc/header.php');
                   </thead>
                   <tbody>
                   <?php
-                  $query = "SELECT * FROM files ORDER BY created_at DESC";
+                  $query = "SELECT * FROM files WHERE user_id = '$id'  ORDER BY created_at DESC";
                   $result = mysqli_query($conn,$query);
                   $sn = 0;
                   while($data=mysqli_fetch_array($result))
@@ -62,12 +65,14 @@ require('../inc/header.php');
                     <td class="py-2 px-4"><?php echo $sn; ?></td>
                     <td class="py-2 px-4"><?php echo $data['name']; ?></td>
                     <td class="py-2 px-4"><?php echo $data['filelink']; ?></td>
-                    <td class="py-2 px-4"> <img src="../uploads/<?php echo $data['filelink'];?>" alt="" class="w-10 h-10"></td>
+                    <td class="py-2 px-4"><?php echo $data['type']; ?></td>
+                    <td class="py-2 px-4"> <img src="../../user/uploads/<?php echo $data['filelink'];?>" alt="" class="w-10 h-10"></td>
 
-                    <td class="py-2 px-4 ">
+                    <td class="py-2">
                       <div class="flex justify-between space-x-2">
-                        <a name="" id="" class="w-2 btn btn-danger" href="../process/deletefile.php?id=<?php echo $data['id']; ?>" role="button"><i class="fa-solid fa-trash-can -ml-2"></i></a>
-                        <a name="" id="" class="w-2 btn btn-primary" href="../uploads/<?php echo $data['filelink']; ?>" role="button" target="_blank"><i class="fa-solid fa-eye -ml-2"></i></a></td>
+                        <a name="" id="" class="w-1 btn btn-danger" href="../process/deletefile.php?id=<?php echo $data['id']; ?>" role="button"><i class="fa-solid fa-trash-can -ml-2"></i></a>
+                        <a name="" id="" class="w-1 btn btn-primary" href="../process/editfile.php?id=<?php echo $data['id']; ?>" role="button" target="_blank"><i class="fa-solid fa-pen -ml-2"></i></a>
+                        <a name="" id="" class="w-1 btn bg-yellow-200 hover:bg-yellow-300" href="../../user/uploads/<?php echo $data['filelink']; ?>" role="button" target="_blank"><i class="fa-solid fa-eye -ml-2 text-yellow-500"></i></a></td>
 
                       </div>
                    </td>
@@ -97,4 +102,3 @@ require('../inc/header.php');
 
 </div>
 <!-- end wrapper -->
-

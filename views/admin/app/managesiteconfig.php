@@ -2,7 +2,8 @@
 <?php
 require('../../connection/config.php');
 require('../inc/header.php');
-
+session_start();
+$id = $_SESSION['userId'];
 ?>
 
 
@@ -24,20 +25,20 @@ require('../inc/header.php');
     <!-- start sidebar -->
   
    <section class="content w-full ">
-      <div class="container-fluid">
+      <div class="container-fluid md:w-5/6 mx-auto ">
         <!-- Small boxes (Stat box) -->
-        <a href="uploadfile.php" class="absolute right-16 top-20"> <button class="btn btn-primary p-2">Add</button></a> 
+        <a href="uploadfile.php" class="relative left-8 top-14"> <button class="btn  btn-primary p-2">Add</button></a> 
 
           <!-- left column -->
           <div class="col-md-12">
           <div class="card rounded-xl">
               <div class="card-header bg-gray-800 rounded-t-xl">
-                <h3 class="card-title text-white">Manage Files</h3>
+                <h3 class="card-title text-center font-semibold text-lg text-white">Manage Site Config</h3>
                
               </div>
               <!-- /.card-header -->
               <div class="card-body overflow-x-auto relative">
-                <table id="example1" width="100%" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table id="example1" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr >
                  
@@ -51,7 +52,7 @@ require('../inc/header.php');
                   </thead>
                   <tbody>
                   <?php
-                                $query = "SELECT * FROM siteconfig ORDER BY created_at DESC";
+                                $query = "SELECT * FROM siteconfig WHERE user_id = '$id' ORDER BY created_at DESC";
                                 $result = mysqli_query($conn, $query);
                                 $sn = 0;
                                 while ($data = mysqli_fetch_array($result)) {
@@ -65,8 +66,8 @@ require('../inc/header.php');
 
                     <td class="py-2 px-4 ">
                       <div class="flex justify-between space-x-2">
-                        <a name="" id="" class="w-2 btn btn-danger" href="../process/deletefile.php?id=<?php echo $data['id']; ?>" role="button"><i class="fa-solid fa-trash-can -ml-2"></i></a>
-                        <a name="" id="" class="w-2 btn btn-primary" href="editsiteconfig.php?id=<?php echo $data['id']; ?>" role="button" target="_blank"><i class="fa-solid fa-pen -ml-2"></i></a></td>
+                        <a name="" id="" class="w-1 btn btn-danger" href="../process/deletefile.php?id=<?php echo $data['id']; ?>" role="button"><i class="fa-solid fa-trash-can -ml-2"></i></a>
+                        <a name="" id="" class="w-1 btn btn-primary" href="../process/editsiteconfig.php?id=<?php echo $data['id']; ?>" role="button" target="_blank"><i class="fa-solid fa-pen -ml-2"></i></a></td>
 
                       </div>
                    </td>
@@ -96,4 +97,3 @@ require('../inc/header.php');
 
 </div>
 <!-- end wrapper -->
-
