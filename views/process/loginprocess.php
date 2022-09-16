@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
             $_SESSION['userId'] = $row['id'];
             $id = $row['id'];
 
-            //assign permission
+            // assign permission
             $permissionQuery = "SELECT v2 FROM `permissions` WHERE v0 = '$id'";
             $permissionResult = mysqli_query($conn, $permissionQuery);
            
@@ -38,6 +38,8 @@ if (isset($_POST['login'])) {
                     $_SESSION['role'] = "job-seeker";
                    }
 ?>
+<?php   echo  $_SESSION['userId'] ; ?>
+
 
                     <meta http-equiv="refresh" content="0;url=../user/app/dashboard.php">
                 <?php
@@ -45,6 +47,7 @@ if (isset($_POST['login'])) {
                     # code...
                     $_SESSION['role'] = "admin";
                 ?>
+             
                     <meta http-equiv="refresh" content="0;url=../admin/app/index.php">
                 <?php
                 } else {

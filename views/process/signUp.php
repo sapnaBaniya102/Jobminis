@@ -10,9 +10,11 @@ if (isset($_POST['submit'])) {
     $password = md5($_POST['password']);
     $confirmPassword = md5($_POST['confirmpassword']);
 
-    if ($email == "" || $password == "" || $confirmPassword == "") {
-        echo header("Location: ../auth/signup.php?msg=error#signup");
-    } else {
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $sql = mysqli_query($conn, "SELECT * FROM user WHERE email = '{$email}'");
+        if(mysqli_num_rows($sql) > 0){
+            echo "$email - This email already exist!";
+        }else {
         if ($password == $confirmPassword) {
             $status = "inactive";
             $user = "INSERT INTO `user` (email,status) VALUES('$email','$status')";
@@ -55,6 +57,9 @@ if (isset($_POST['submit'])) {
         else {
             echo header("Location: ../auth/signup.php?msg=password#signup");
         }
+     }
+    }else{
+        echo "$email is not a valid email!";
     }
 }
 if (isset($_POST['submit1'])) {

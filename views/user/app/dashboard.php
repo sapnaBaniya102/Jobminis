@@ -1,9 +1,10 @@
 <?php
+@session_start();
 require('../../connection/config.php');
 require('../inc/header.php');
 require('../inc/navbar.php');
-@session_start();
 ?>
+<?php include_once "header.php"; ?>
 
 
 

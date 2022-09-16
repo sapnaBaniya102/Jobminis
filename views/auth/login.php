@@ -1,4 +1,5 @@
 <?php
+@session_start();
 include ('../layouts/header.php');
 require('../connection/config.php');
 ?>
@@ -78,6 +79,7 @@ require('../connection/config.php');
         </div>
     </div>
     </div>
+    <script src="../../assets/js/"></script>
 </body>
 
 </html>
