@@ -3,7 +3,8 @@ require('../connection/config.php');
 session_start();
 
 $skill = $_POST["skills"];
- 
+
+$id = $_SESSION['userId'];
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
@@ -37,8 +38,8 @@ if (isset($_POST['submit'])) {
                 $result2 = mysqli_query($conn, $credentialsQuery);
             
                 if ($result2) {
-                   
-                    echo header("Location:../auth/signup.php#username");
+                    
+                    // echo header("Location:../auth/signup.php#username");
                 }
                 else{
                     
@@ -143,5 +144,6 @@ if (isset($_POST['account'])) {
     
   
 }
+
 
 ?>

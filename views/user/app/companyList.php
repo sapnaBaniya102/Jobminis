@@ -11,41 +11,35 @@ require('../../connection/config.php');
 
         <!-- end sidbar -->
         <div class="company-list-wrapper w-full mt-28 h-full">
-            <div class="title bg-teal-50 py-20 text-center">
+            <div class="title bg-teal-100 py-20 text-center">
                 <h1 class="text-6xl font-extrabold mb-3">Search Companies</h1>
                 <span class="text-xl font-light text-gray-600 font-sans">Work for the best company in the world</span>
             </div>
             <div class="company-list my-8 mx-16 grid grid-cols-12 gap-5">
-                <div class="search-company bg-blue-50 space-y-6 h-2/4  rounded-3xl p-8  col-span-3">
+                <div class="search-company bg-blue-100 space-y-6 h-2/4  rounded-3xl p-8  col-span-3">
                     <div class="name space-y-3">
                         <h1 class="text-lg font-semibold">Search by Name</h1>
                         <input type="text" name="name" id="name" placeholder="Company Name" class="w-full h-12 rounded-3xl placeholder:pl-3">
                         <i class="fa-solid fa-magnifying-glass absolute pt-4 -ml-10"></i>
                     </div>
 
-                    <!-- <div class="location space-y-3">
-                        <h1 class="text-lg font-semibold">Location</h1>
-                        <input type="text" name="location" id="location" placeholder="Enter Location" class="w-full h-12 rounded-3xl placeholder:pl-3">
-                        <i class="fa-solid fa-earth-americas absolute pt-4 -ml-10"></i>
-                    </div> -->
-
-                    <!-- <div class="category  space-y-3">
-                        <h1 class="text-lg font-semibold">Search by industry</h1>
-                        <input type="text" name="industry" id="industry" placeholder="Enter Industry" class="w-full h-12 rounded-3xl placeholder:pl-3">
-
-                        <i class="fa-solid fa-earth-americas absolute pt-4 -ml-10"></i>
-                    </div> -->
+                 
 
                 </div>
                 <div class="list col-span-9 py-7">
                     <div class="list-header">
-                        <h1 class="text-2xl font-semibold text-gray-600">Showing <span class="text-black"> 1523 </span> companies</h1>
+                    <?php
+                $query1 = "SELECT id FROM user_details WHERE status='true'";
+                $result1= mysqli_query($conn, $query1);
+                $row1 = mysqli_num_rows($result1);
+                ?>
+                        <h1 class="text-2xl font-semibold text-gray-600">Showing <span class="text-black"> <?php echo $row1; ?> </span> companies</h1>
                     </div>
                     <div class="list-body grid grid-cols-2 mt-16 gap-5" id="company">
                         <?php
                        
                         $role = "job-provider";
-                    $query = "SELECT * FROM permissions INNER JOIN user_details ON permissions.v0 = user_details.user_id WHERE permissions.v1 = '$role'";
+                    $query = "SELECT user_details.name AS name, user_details.information AS information, user_details.id AS id FROM permissions INNER JOIN user_details ON permissions.v0 = user_details.user_id WHERE permissions.v1 = '$role' AND user_details.status = 'true'";
                     $result = mysqli_query($conn,$query);
 if (mysqli_num_rows($result) > 0) {
     # code...
@@ -62,7 +56,7 @@ if (mysqli_num_rows($result) > 0) {
                             <p class="text-gray-500 font-extralight text-base font-serif"><?php echo $row['information'] ?></p>
                             <h2 class="font-medium">10 jobs</h2>
                             <div class=" pb-3 text-center">
-                                <a href="../app/companyDetails.php" class="text-lg text-blue-600 hover:text-blue-700 font-normal">View Profile <i class="fa-solid fa-chevron-right text-sm font-semibold"></i></a>
+                                <a href="../app/companyDetails.php?id=<?php echo $row['id'] ?>" class="text-lg text-blue-600 hover:text-blue-700 font-normal">View Profile <i class="fa-solid fa-chevron-right text-sm font-semibold"></i></a>
                             </div>
                         </div>
         <?php
@@ -80,7 +74,7 @@ else {
         </div>
     </div>
 </main>
-<script type="text/javascript" src="../../../dist/js/jQuery.js"></script>
+<script type="text/javascript" src="../../../assets/js/jQuery.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
      

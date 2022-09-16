@@ -4,7 +4,7 @@ include 'header.php'
 <div class="flex flex-no-wrap">
     <!-- Sidebar starts -->
     <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-    <div style="min-height: 716px" class="w-64 fixed sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">
+    <div  class="w-64 fixed sm:relative overflow-y-auto bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex" >
 
         <div class="px-8">
             <div class="h-20 w-full flex items-center">
@@ -22,7 +22,6 @@ include 'header.php'
                         </svg>
                         <span class="text-sm ml-2">Dashboard</span>
                     </a>
-                    <div class="py-1 px-3 bg-gray-600 rounded text-gray-300 flex items-center justify-center text-xs">5</div>
                 </li>
                 <li>
                     <button type="button" class="flex items-center w-full mb-4 transition duration-75 py-2 rounded-lg group text-gray-400 hover:text-gray-300  " aria-controls="site-config" data-collapse-toggle="site-config">
@@ -36,7 +35,7 @@ include 'header.php'
                     </button>
                     <ul id="site-config" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm  text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New Site Config</a>
+                            <a href="addsiteconfig.php" class="flex items-center w-full p-2 text-sm  text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New Site Config</a>
                         </li>
                         <li>
                             <a href="managesiteconfig.php" class="flex items-center w-full p-2 text-sm  text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage Site Config</a>
@@ -56,7 +55,7 @@ include 'header.php'
                     </button>
                     <ul id="file-upload" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Upload New File</a>
+                            <a href="addfile.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Upload New File</a>
                         </li>
                         <li>
                             <a href="managefile.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage File Upload</a>
@@ -76,10 +75,10 @@ include 'header.php'
                     </button>
                     <ul id="company" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New Company</a>
+                            <a href="addcompany.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New Company</a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage Company</a>
+                            <a href="managecompany.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage Company</a>
                         </li>
 
                     </ul>
@@ -96,10 +95,10 @@ include 'header.php'
                     </button>
                     <ul id="job" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New Job</a>
+                            <a href="addjob.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New Job</a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage Job</a>
+                            <a href="managejob.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage Job</a>
                         </li>
 
                     </ul>
@@ -116,10 +115,10 @@ include 'header.php'
                     </button>
                     <ul id="user" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New User</a>
+                            <a href="adduser.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New User</a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage User</a>
+                            <a href="manageuser.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage User</a>
                         </li>
 
                     </ul>
@@ -135,11 +134,9 @@ include 'header.php'
                         </svg>
                     </button>
                     <ul id="contact" class="hidden py-2 space-y-2">
+                        
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">New Contact</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage Contact</a>
+                            <a href="managecontact.php" class="flex items-center w-full p-2 text-sm text-gray-400 transition duration-75 rounded-lg group hover:text-gray-300 dark:text-white dark:hover:bg-gray-700 pl-11">Manage Contact</a>
                         </li>
 
                     </ul>
@@ -147,7 +144,7 @@ include 'header.php'
             </ul>
            
         </div>
-        <div class="px-8 border-t border-gray-700">
+        <div class="px-8 border-t h-10 md:h-0 border-gray-700">
             <ul class="w-full flex items-center justify-between bg-gray-800">
                 <li class="cursor-pointer text-white pt-5 pb-3">
                     <button aria-label="show notifications" class="focus:outline-none focus:ring-2 rounded focus:ring-gray-300">
@@ -264,7 +261,7 @@ include 'header.php'
             </ul>
             
         </div>
-        <div class="px-8 border-t border-gray-700">
+        <div class="px-8 border-t -mt-5 border-gray-700">
             <ul class="w-full flex items-center justify-between bg-gray-800">
                 <li class="cursor-pointer text-white pt-5 pb-3">
                     <button aria-label="show notifications" class="focus:outline-none focus:ring-2 rounded focus:ring-gray-300">
@@ -290,5 +287,5 @@ include 'header.php'
         </div>
     </div>
 </div>
-<script src="../../../public/js/admin-sidebar.js"></script>
+<script src="../../../assets/js/admin-sidebar.js"></script>
 <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>

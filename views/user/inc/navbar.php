@@ -10,13 +10,12 @@ $id =  $_SESSION['userId'];
     <nav class="navigation bg-white z-50  top-0 w-full fixed">
         <div class=" header_wrapper flex justify-between">
             <div class="logo w-48 -mt-5 ml-12  ">
-                <img src="../../../img/logo.png" alt="">
+                <img src="../../../assets/img/logo.png" alt="">
             </div>
             <div class="navbar">
                 <ul class="flex justify-between space-x-5 mt-7 text-lg font-semibold">
                     <li class="p-2 hover:text-teal-700 "><a href="../app/dashboard.php">Home</a> </li>
-                    <li class="p-2 hover:text-teal-700"><a href="../app/"> Job</a></li>
-                    <!-- <li class="p-2 hover:text-teal-700"><a href="">About Us</a> </li> -->
+                    <li class="p-2 hover:text-teal-700"><a href="../app/jobList.php"> Job</a></li>
                     <li class="p-2 hover:text-teal-700"><a href="../app/companyList.php">Company</a> </li>
                     <li class="p-2 hover:text-teal-700"><a href="../app/candidateList.php">Candidate</a> </li>
 
@@ -28,10 +27,12 @@ $id =  $_SESSION['userId'];
 
 
     # code...
-    ?>
-      <div>
+    if($role == "job-provider"){
+        ?>
+<div>
             <button id="dropdownJob" data-dropdown-toggle="job" class=" bg-teal-700 p-2 text-white hover:bg-white hover:text-teal-700 focus:ring-4 hover:ring-2 hover:ring-teal-600 focus:outline-none focus:ring-teal-600 px-2 font-medium rounded-lg text-sm text-center inline-flex items-center  type="button">Post a job</button>
 <!-- Dropdown menu -->
+
 <div id="job" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700">
     <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownJob">
       <li>
@@ -44,6 +45,10 @@ $id =  $_SESSION['userId'];
     </ul>
 </div>
 </div> 
+        <?php
+    }
+    ?>
+      
 <?php
 
 
@@ -79,15 +84,14 @@ if ($role == "job-seeker") {
               <button id="notification" onclick="notificationHandler(false)"><i class="fa-solid fa-bell text-lg px-2 hover:text-teal-700"></i></button>
               </div>
               <div class="profile flex space-x-2">
-               <a href="../app/profile.php"> <img src="../../../img/user.svg" class="w-9 -mt-1 " alt=""></a>
+               <a href="../app/profile.php"> <img src="../../../assets/img/user.svg" class="w-9 -mt-1 " alt=""></a>
                <a href="../app/profile.php"> <span class="hover:text-teal-700 text-lg font-semibold">Simran</span></a>
               </div>
             </div>
         </div>
 
         <!-- notification start -->
-        <div class="w-full h-full hidden bg-opacity-90 top-24 overflow-y-auto overflow-x-hidden fixed sticky-0" id="chec-div">
-            <div class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="notification">
+            <div class="w-full absolute hidden z-30 right-0 h-screen pb-5 overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="chec-div">
                 <div class="2xl:w-4/12 bg-gray-50 h-screen overflow-y-auto p-8 absolute right-0">
                     <div class="flex items-center justify-between">
                         <p tabindex="0" class="focus:outline-none text-2xl font-semibold leading-6 text-gray-800">Notifications</p>
@@ -270,7 +274,7 @@ if ($role == "job-seeker") {
 
 
 </nav>
-<script type="text/javascript" src="../../../dist/js/jQuery.js"></script>
+<script type="text/javascript" src="../../../assets/js/jQuery.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#notification').click(function() {

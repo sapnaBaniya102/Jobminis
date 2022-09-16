@@ -166,27 +166,23 @@ include '../views/connection/config.php';
                     ?>
                     <div class="w-full px-4">
                         <h3 class="font-bold text-center text-3xl sm:text-4xl md:text-[40px] text-dark mb-4">
-                            <?php
-                            echo $row['site_key'];
-                            ?>
+                            Frequently Asked Questions(FAQs)
                         </h3>
                         <p class="text-base text-center sm:text-xl leading-relaxed sm:leading-relaxed text-body-color">
-                            <?php
-                            echo $row['site_value'];
-                            ?>
+                           
                         </p>
                     </div>
                 </div>
                 <div class=" sm:mx-auto sm:mb-2 -mx-2 py-2 wow fadeInUp">
                     <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-                        <div class="w-full lg:w-1/2 px-4 py-2">
+                        <div class="w-full grid grid-cols-2 gap-4 px-4 py-2">
                             <?php
-                            $name_query = "SELECT * FROM siteconfig WHERE name='questions1'";
+                            $name_query = "SELECT * FROM siteconfig WHERE name='faq'";
                             $name_result = mysqli_query($conn, $name_query);
-                            $row = $name_result->fetch_assoc();
-
-                            ?>
-                            <details class="mb-4 border rounded-lg">
+                            while (    $row = mysqli_fetch_array($name_result) ) {
+                                # code...
+                                ?>
+ <details class="mb-4 border rounded-lg">
                                 <summary class="cursor-pointer text-dark bg-light-400 py-2 px-4 pl-2 shadow">
                                     <?php
                                     echo $row['site_key'];
@@ -200,38 +196,15 @@ include '../views/connection/config.php';
                                     </span>
                                 </div>
                             </details>
-                            <?php
-                            $name_query = "SELECT * FROM siteconfig WHERE name='questions2'";
-                            $name_result = mysqli_query($conn, $name_query);
-                            $row = $name_result->fetch_assoc();
+                                <?php
+                            }
+               
 
                             ?>
-                            <details class="mb-4 border rounded-lg">
-                                <summary class="cursor-pointer text-dark bg-light-400 py-2 px-4 pl-2 shadow">
-                                    <?php echo $row['site_key'];
-                                    ?>
-                                </summary>
-                                <div class="bg-light-400 py-2 px-4 text-justify">
-                                    <span class="">
-                                        <?php
-                                        echo $row['site_value'];
-                                        ?>
-                                    </span>
-                                </div>
-                            </details>
-                            <details class="mb-4 border rounded-lg">
-                                <summary class="cursor-pointer text-dark bg-light-400 py-2 px-4 pl-2 shadow">
-                                    Is my data secure on this site?
-                                </summary>
-                                <div class="bg-light-400 py-2 px-4 text-justify">
-                                    <span class="">
-                                        We store the csv files you've uploaded on our platform in a secured vault and account
-                                        activity logs. We don't store any data records you request for processing.
-                                    </span>
-                                </div>
-                            </details>
+                           
+                           
                         </div>
-                        <div class="w-full lg:w-1/2 px-4 py-2">
+                        <!-- <div class="w-full lg:w-1/2 px-4 py-2">
                             <details class="mb-4 border rounded-lg">
                                 <summary class="cursor-pointer text-dark bg-light-400 py-2 px-4 pl-2 shadow">
                                     Can I create multiple users in my account?
@@ -270,7 +243,7 @@ include '../views/connection/config.php';
                                     </span>
                                 </div>
                             </details>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
