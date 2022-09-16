@@ -1,6 +1,6 @@
 <?php
 require('../connection/config.php');
-session_start();
+@session_start();
 
 $skill = $_POST["skills"];
  

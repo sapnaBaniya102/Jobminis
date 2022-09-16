@@ -1,6 +1,6 @@
 <?php
 require('../connection/config.php');
-session_start();
+@session_start();
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = md5($_POST['password']);

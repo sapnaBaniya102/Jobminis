@@ -2,6 +2,7 @@
 require('../../connection/config.php');
 require('../inc/header.php');
 require('../inc/navbar.php');
+@session_start();
 ?>
 
 
@@ -30,7 +31,7 @@ require('../inc/navbar.php');
             <div class="flex flex-row justify-between items-center">
               <div class="h6 text-indigo-700 fad fa-shopping-cart"></div>
               <span class="rounded-full text-white badge bg-teal-400 text-xs">
-                12%
+               <? echo $_SESSION['userId'];?>
                 <i class="fal fa-chevron-up ml-1"></i>
               </span>
             </div>

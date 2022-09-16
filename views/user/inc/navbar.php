@@ -1,9 +1,8 @@
 <?php
-include './header.php';
-session_start();
+@session_start();
 $role =  $_SESSION['role'];
 $id =  $_SESSION['userId'];
-
+echo $id;
 ?>
 <!-- start navbar -->
 <header>
@@ -14,7 +13,7 @@ $id =  $_SESSION['userId'];
             </div>
             <div class="navbar">
                 <ul class="flex justify-between space-x-5 mt-7 text-lg font-semibold">
-                    <li class="p-2 hover:text-teal-700 "><a href="../app/dashboard.php">Home</a> </li>
+                    <li class="p-2 hover:text-teal-700 "><a href="../app/dashboard.php"><?php echo $_SESSION['userId'];?></a> </li>
                     <li class="p-2 hover:text-teal-700"><a href="../app/"> Job</a></li>
                     <!-- <li class="p-2 hover:text-teal-700"><a href="">About Us</a> </li> -->
                     <li class="p-2 hover:text-teal-700"><a href="../app/companyList.php">Company</a> </li>
@@ -58,7 +57,7 @@ $id =  $_SESSION['userId'];
         <a href="../app/setting.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-key pr-3"></i>Security and login</a>
       </li>
       <li>
-        <a href="../process/logout.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-right-from-bracket pr-3"></i>Log out</a>
+        <a href="../../process/logout.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-right-from-bracket pr-3"></i>Log out</a>
       </li>
       <?php
 if ($role == "job-seeker") {

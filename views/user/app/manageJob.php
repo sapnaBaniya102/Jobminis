@@ -2,7 +2,7 @@
 include '../inc/header.php';
 require('../inc/navbar.php');
 require('../../connection/config.php');
-session_start();
+@session_start();
 $id = $_SESSION['userId'];
 ?>
 

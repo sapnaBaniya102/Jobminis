@@ -1,6 +1,7 @@
 <?php
 include('../layouts/header.php');
 require('../connection/config.php');
+@session_start();
 
 ?>
 
