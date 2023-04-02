@@ -1,8 +1,7 @@
-
 <?php
 require('../../connection/config.php');
 require('../inc/header.php');
-session_start();
+@session_start();
 $id = $_SESSION['userId'];
 $name = '';
 $information = '';
@@ -67,7 +66,7 @@ $status = $row['status'];
    <section class="content w-full ">
       <div class="container-fluid w-4/5 mx-auto">
         <!-- Small boxes (Stat box) -->
-        <a href="uploadfile.php" class="relative  mx-auto top-16 left-6"> <button class="btn btn-primary p-2">Add</button></a> 
+        <a href="../app/managecompany.php" class="relative  mx-auto top-16 left-6"> <button class="btn btn-primary p-2">Add</button></a> 
 
           <!-- left column -->
           <div class="col-md-12">

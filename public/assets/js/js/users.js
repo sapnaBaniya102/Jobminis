@@ -20,11 +20,12 @@ searchBar.onkeyup = () => {
         searchBar.classList.remove("active");
     }
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "../../views/user/process/search.php", true);
+    xhr.open("POST", "../../user/process/search.php", true);
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 let data = xhr.response;
+                console.log(data);
                 usersList.innerHTML = data;
             }
         }
@@ -35,7 +36,7 @@ searchBar.onkeyup = () => {
 
 setInterval(() => {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "../../views/user/process/users.php", true);
+    xhr.open("GET", "../../user/process/users.php", true);
     xhr.onload = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {

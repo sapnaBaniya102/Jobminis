@@ -16,46 +16,48 @@ if (isset($_POST['login'])) {
         if ($count == 1) {
 
             $row = mysqli_fetch_assoc($result);
+
             $_SESSION['email'] = $row['email'];
             $_SESSION['userId'] = $row['id'];
             $id = $row['id'];
+            $status = "Active now";
+            $sql2 = mysqli_query($conn, "UPDATE user SET status = '{$status}' WHERE id = {$row['id']}");
 
             // assign permission
             $permissionQuery = "SELECT v2 FROM `permissions` WHERE v0 = '$id'";
             $permissionResult = mysqli_query($conn, $permissionQuery);
-           
+
             if ($permissionResult) {
                 # code...
                 $row = mysqli_fetch_assoc($permissionResult);
+
                 if ($row['v2'] == 'job-provider' || $row['v2'] == 'job-seeker') {
                     # code...
-                   if ($row['v2'] == 'job-provider') {
-                    # code...
-                    $_SESSION['role'] = "job-provider";
-                   }
-                   else {
-                    # code...
-                    $_SESSION['role'] = "job-seeker";
-                   }
-?>
-<?php   echo  $_SESSION['userId'] ; ?>
+                    if ($row['v2'] == 'job-provider') {
+                        # code...
+                        $_SESSION['role'] = "job-provider";
+                    } else {
+                        # code...
+                        $_SESSION['role'] = "job-seeker";
+                    }
+                ?>
 
 
                     <meta http-equiv="refresh" content="0;url=../user/app/dashboard.php">
                 <?php
-                } elseif ($row['v2'] == 'admin') {
+                } elseif ($row['v2'] === '*') {
                     # code...
                     $_SESSION['role'] = "admin";
                 ?>
-             
+
                     <meta http-equiv="refresh" content="0;url=../admin/app/index.php">
                 <?php
                 } else {
-                   
+
 
                 ?>
                     <meta http-equiv="refresh" content="0;url=../app/index.php">
-<?php
+           <?php
                 }
             }
 
@@ -66,6 +68,8 @@ if (isset($_POST['login'])) {
             echo header("Location:../auth/login.php?msg=loginerror");
         }
     }
+}else{
+    echo header("Location:../auth/login.php?msg=loginerror");
 }
 
 ?>

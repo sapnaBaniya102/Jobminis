@@ -1,7 +1,9 @@
 <?php
+@session_start();
 require('../../connection/config.php');
 require('../inc/header.php');
 require('../inc/navbar.php');
+
 $id = $_SESSION['userId'];
 $name = '';
 $profile = '';
@@ -76,13 +78,14 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="form">
                         <div class="update-notice" id="update-notice"></div>
                     <?php
-                $account_id = '';
-     $profile_id ='';
-     $address_id = '';
+                $account_id = 0;
+     $profile_id =0;
+     $address_id = 0;
     $query_search = "SELECT profile.first_name AS first_name, profile.id AS id, profile.middle_name AS middle_name, profile.last_name AS last_name, profile.email AS email, profile.first_name AS first_name , profile.bio AS bio, account_profiles.account_id AS account_id  FROM profile INNER JOIN account_profiles ON profile.id = account_profiles.profile_id WHERE profile.user_id = '$id' ";
+    echo $query_search;
+    die('');
     $search_result = mysqli_query($conn, $query_search);
-    if (mysqli_num_rows($search_result)>0) {
-        # code...
+   
       while ($row1 = mysqli_fetch_assoc($search_result)) {
         ?>
                     <div class="name w-full grid grid-cols-3  py-5 pb-10 border-b border-b-gray-100">
@@ -105,11 +108,13 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                     <div class="username w-full space-x-8  flex justify-start py-7 pb-10 border-b border-b-gray-100">
 <?php
- $account_id = $row1['account_id'];
- $profile_id = $row1['id'];
+ $account_id = $account_id + $row1['account_id'];
+ $profile_id =  $profile_id + $row1['id'];
         $search = "SELECT account.user_name AS username, profile_addresses.address_id AS address_id, profile_addresses.name AS name FROM account INNER JOIN profile_addresses ON account.id = profile_addresses.account_id WHERE profile_addresses.account_id = '$account_id' AND  profile_addresses.profile_id = '$profile_id'";
 $result = mysqli_query($conn, $search);
-
+echo $search;
+die('');
+ 
 if (mysqli_num_rows($result)>0) {
     # code...
     while ($row2 = mysqli_fetch_assoc($result)) {
@@ -213,7 +218,6 @@ if (mysqli_num_rows($result)>0) {
  };
        };
      };
-    };
     ?>
     </div>
                 </div>
@@ -250,10 +254,13 @@ if (isset($_FILES["image"]["name"])) {
         document.location.href = '../app/profile.php'; </script> 
         ";
     } else {
+      
         $newImageName = $imageName . " - " . date("Y.m.d" . " - " . date("h.i.sa"));
         $newImageName .= "." . $imageExtension;
-        $query = "UPDATE galleries SET name ='$newImageName', link='$newImageName' WHERE user_id = '$id' AND type = '$type' ";
+        $query = "INSERT INTO galleries(link,user_id,name,type) VALUES('$newImageName,'$id','$newImageName','$type' ";
+       
         $result = mysqli_query($conn, $query);
+      
         move_uploaded_file($tempName, '../uploads/' . $newImageName);
         echo
         "
@@ -283,7 +290,7 @@ if (isset($_FILES["profileImage"]["name"])) {
         $newImageName = $imageName . " - " . date("Y.m.d" . " - " . date("h.i.sa"));
         $newImageName .= "." . $imageExtension;
         $type = "profile";
-        $query = "UPDATE galleries SET name ='$newImageName', link='$newImageName' WHERE user_id = '$id' AND type = '$type' ";
+        $query = "INSERT INTO galleries(link,status, is_active,user_id,name,type) VALUES('$newImageName, 'true', 'active','$id','$newImageName','$type'";
         $result = mysqli_query($conn, $query);
         move_uploaded_file($tempName, '../uploads/' . $newImageName);
         echo

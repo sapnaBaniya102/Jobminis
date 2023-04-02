@@ -1,6 +1,10 @@
 <?php
+@session_start();
+require('../../connection/secure_user.php');
 include '../inc/header.php';
 require('../inc/navbar.php');
+require('../../connection/config.php');
+$role = "job-seeker";
 ?>
 
 
@@ -10,113 +14,67 @@ require('../inc/navbar.php');
   
   <!-- end sidbar -->
   <div class="candidate-list-wrapper  w-full h-full bg-slate-50">
-  <div class="candidate-list-header w-full bg-teal-50 p-24 mt-8">             
+  <div class="candidate-list-header w-full bg-teal-100 p-24 mt-8">             
         <h1 class="text-5xl font-bold mb-4">Search Candidate</h1>
         <span class="text-lg text-gray-600">Work with the most suitable candidates in the world</span>
-        <form  class="mt-10 bg-white rounded-full p-1 grid grid-cols-3 gap-3 px-4">
-            <input type="text" placeholder="Candidate Name" class="p-3 rounded-xl border-none">
-            <input type="text" placeholder="Location" class="border-r p-2 border-none">
-            <button type="submit" name="submit" class="bg-blue-800 mx-5 rounded-full  text-white font-semibold">Find Candidate</button>
-        </form>
+        
     </div>
-        <div class="company-list my-8 mx-16 grid grid-cols-12 gap-5">
-            <div class="search-company bg-blue-50 space-y-6 h-2/4  rounded-3xl p-8  col-span-3">
-                <div class="name space-y-3">
-                <h1 class="text-lg font-semibold">Search by keyword</h1>
-                <input type="text" name="name" placeholder="Candidate Name" class="w-full h-12 rounded-3xl placeholder:pl-3">
-                <i class="fa-solid fa-magnifying-glass absolute pt-4 -ml-10"></i>
-                </div>
-
-                <div class="location space-y-3">
-                <h1 class="text-lg font-semibold">Location</h1>
-                <input type="text" name="location" placeholder="Enter Location" class="w-full h-12 rounded-3xl placeholder:pl-3">
-                <i class="fa-solid fa-earth-americas absolute pt-4 -ml-10"></i>
-                </div>
-
-               
-            </div>
             <div class="list col-span-9 py-7">
             <div class="list-header">
-                    <h1 class="text-2xl font-semibold text-gray-600">Showing <span class="text-black"> 5 </span> candidates</h1>
+                <?php
+        
+                     
+        $query = "SELECT profile.id  FROM permissions INNER JOIN profile ON permissions.v0 = profile.user_id WHERE permissions.v1 = '$role' AND profile.is_active = 'true'";
+        $result = mysqli_query($conn,$query);
+        $count = mysqli_num_rows($result);
+       
+                ?>
+                    <h1 class="text-2xl font-semibold text-gray-600">Showing <span class="text-black"><?php echo $count; ?></span> candidates</h1>
                 </div>
-                <div class="list-body my-5 pt-5 mx-20 grid grid-cols-3 gap-5">
+                <div class="list-body my-5 pt-5 mx-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 " id ="candidate">
+                <?php
+                       
+                     
+                   $query = "SELECT profile.first_name AS first, profile.middle_name AS middle, profile.last_name AS last, profile.id AS id, profile.user_id AS userId, profile.email AS email, profile.bio AS bio FROM permissions INNER JOIN profile ON permissions.v0 = profile.user_id WHERE permissions.v1 = '$role' AND profile.is_active = 'true'";
+                   $result = mysqli_query($conn,$query);
+                  
+if (mysqli_num_rows($result) > 0) {
+   # code...
+   while ($row = mysqli_fetch_assoc($result)) {
+       # code...
+
+       ?>
         <div class="candidate-card hover:shadow hover:shadow-gray-500 border bg-white border-gray-300 space-y-2 text-center rounded-3xl">
         <div class="image">
             <img src="../../../assets/img/download.jpeg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
         </div>
-        <h1 class="font-bold text-xl mt-3 ">Scott Goodwin</h1>
-        <span class="text-sm">Marketing Expert</span>
+        <h1 class="font-bold text-xl mt-3 "><?php echo $row['first'].' '.$row['middle'].' '.$row['last']; ?></h1>
+        <?php
+        $profileId = $row['id'];
+        $add_query = "SELECT * FROM profile_addresses INNER JOIN addresses ON profile_addresses.address_id = addresses.id WHERE profile_addresses.profile_id = '$profileId'";
+        $add_result = mysqli_query($conn,$add_query);
+        $add_row = mysqli_fetch_assoc($add_result);  ?>
         <div class="location space-x-2 flex justify-center pt-4">
         <i class="fa-solid fa-earth-americas"></i>
-        <h1 class="text-base font-medium -mt-1">Los Angles, CA</h1>
-        </div>
-        <div class="py-6 pb-8 ">
-        <a href="#" class="text-lg text-blue-600 hover:text-blue-700 font-normal">View Profile  <i class="fa-solid fa-chevron-right text-sm font-semibold"></i></a>
-        </div>
-        </div>
-
-        <div class="candidate-card hover:shadow bg-white hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
-        <div class="image">
-            <img src="../../../assets/img/image-removebg-preview (5).png" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
-        </div>
-        <h1 class="font-bold text-xl mt-3 ">Arbin Poudel</h1>
-        <span class="text-sm">Software developer</span>
-        <div class="location space-x-2 flex justify-center pt-4">
-        <i class="fa-solid fa-earth-americas"></i>
-        <h1 class="text-base font-medium -mt-1">london</h1>
-        </div>
-        <div class="py-6 pb-8 ">
-        <a href="#" class="text-lg text-blue-600 hover:text-blue-700 font-normal">View Profile  <i class="fa-solid fa-chevron-right text-sm font-semibold"></i></a>
-        </div>
-        </div>
-
-        <div class="candidate-card hover:shadow bg-white hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
-        <div class="image">
-            <img src="../../../assets/img/user2.jpg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
-        </div>
-        <h1 class="font-bold text-xl mt-3 ">James Smith</h1>
-        <span class="text-sm">Manager</span>
-        <div class="location space-x-2 flex justify-center pt-4">
-        <i class="fa-solid fa-earth-americas"></i>
-        <h1 class="text-base font-medium -mt-1">US</h1>
-        </div>
-        <div class="py-6 pb-8 ">
-        <a href="#" class="text-lg text-blue-600 hover:text-blue-700 font-normal">View Profile  <i class="fa-solid fa-chevron-right text-sm font-semibold"></i></a>
-        </div>
-        </div>
-
-        <div class="candidate-card hover:shadow bg-white hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
-        <div class="image">
-            <img src="../../../assets/img/user3.jpg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
-        </div>
-        <h1 class="font-bold text-xl mt-3 ">Mickel</h1>
-        <span class="text-sm">Marketing Advisor</span>
-        <div class="location space-x-2 flex justify-center pt-4">
-        <i class="fa-solid fa-earth-americas"></i>
-        <h1 class="text-base font-medium -mt-1">Kathmandu, Nepal</h1>
-        </div>
-        <div class="py-6 pb-8 ">
-        <a href="#" class="text-lg text-blue-600 hover:text-blue-700 font-normal">View Profile  <i class="fa-solid fa-chevron-right text-sm font-semibold"></i></a>
-        </div>
-        </div>
-
-        <div class="candidate-card hover:shadow bg-white hover:shadow-gray-500 border border-gray-300 space-y-2 text-center rounded-3xl">
-        <div class="image">
-            <img src="../../../assets/img/user1.jpg" class=" rounded-full w-24 h-24 mx-auto my-6 " alt="">
-        </div>
-        <h1 class="font-bold text-xl mt-3 ">Scott Goodwin</h1>
-        <span class="text-sm">Marketing Expert</span>
-        <div class="location space-x-2 flex justify-center pt-4">
-        <i class="fa-solid fa-earth-americas"></i>
-        <h1 class="text-base font-medium -mt-1">Los Angles, CA</h1>
-        </div>
-        <div class="py-6 pb-8 ">
-        <a href="#" class="text-lg text-blue-600 hover:text-blue-700 font-normal">View Profile  <i class="fa-solid fa-chevron-right text-sm font-semibold"></i></a>
-        </div>
-        </div>
-       
+        <?php
+if ($add_row['city'] !='') {
+    # code...
+    ?>
+            <h1><?php echo $add_row['city'].' '. $add_row['country']; ?></h1>
+<?php
+}
+        ?>
         
+        </div>
+        <div class="py-6 pb-8 ">
+        <a href="../app/candidateDetails.php?id=<?php echo $profileId ?>" class="text-lg text-blue-600 hover:text-blue-700 font-normal">View Profile  <i class="fa-solid fa-chevron-right text-sm font-semibold"></i></a>
+        </div>
+        </div>
 
+<?php
+   }
+}
+?>
     </div>
     </div>
    
@@ -225,6 +183,51 @@ require('../inc/navbar.php');
     </div>
 </div> -->
 </div>
+
+<script type="text/javascript" src="../../../assets/js/jQuery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+     
+        $("#name").keyup(function(){
+            var name = $(this).val();
+             if (name != "") {
+                $.ajax({
+                    url: "../process/getCandidate.php",
+                    method: "POST",
+                    data:{
+				type: 1,
+                name: name,
+			},
+            success: function(data){
+              
+                $("#candidate").html(data);
+
+            }
+                });
+             }
+             else{
+                $.ajax({
+                    url: "../process/getCandidate.php",
+                    method: "POST",
+                    data:{
+				type: 2,
+			},
+            success: function(data){
+              
+                $("#candidate").html(data);
+
+            }
+                });
+
+             }
+             
+        });
+
+
+    });
+
+</script>
 <?php
 include '../inc/footer.php'
 ?>
+Write to Simran Baniya

@@ -1,10 +1,12 @@
 <?php
 @session_start();
+require('../../connection/secure_user.php');
+
 require('../../connection/config.php');
 require('../inc/header.php');
 require('../inc/navbar.php');
+$id = $_SESSION['userId'];
 ?>
-<?php include_once "header.php"; ?>
 
 
 
@@ -30,9 +32,15 @@ require('../inc/navbar.php');
 
             <!-- top -->
             <div class="flex flex-row justify-between items-center">
-              <div class="h6 text-indigo-700 fad fa-shopping-cart"></div>
+              <div class="h6 text-yellow-600 fad fa-sitemap"></div>
+
               <span class="rounded-full text-white badge bg-teal-400 text-xs">
-               <? echo $_SESSION['userId'];?>
+                <?php
+                $query = "SELECT id FROM job_details WHERE user_id='$id'";
+                $result = mysqli_query($conn, $query);
+                $row = mysqli_num_rows($result);
+                ?>
+                <?php echo $row ; ?>
                 <i class="fal fa-chevron-up ml-1"></i>
               </span>
             </div>
@@ -41,7 +49,7 @@ require('../inc/navbar.php');
             <!-- bottom -->
             <div class="mt-8">
               <h1 class="h5 num-4"></h1>
-              <p>items sales</p>
+              <p>Total Jobs Posted</p>
             </div>
             <!-- end bottom -->
 
@@ -59,7 +67,7 @@ require('../inc/navbar.php');
 
             <!-- top -->
             <div class="flex flex-row justify-between items-center">
-              <div class="h6 text-red-700 fad fa-store"></div>
+              <div class="h6 text-green-700 fad fa-users"></div>
               <span class="rounded-full text-white badge bg-red-400 text-xs">
                 6%
                 <i class="fal fa-chevron-down ml-1"></i>
@@ -70,7 +78,7 @@ require('../inc/navbar.php');
             <!-- bottom -->
             <div class="mt-8">
               <h1 class="h5 num-4"></h1>
-              <p>new orders</p>
+              <p>Total canditates applied for job</p>
             </div>
             <!-- end bottom -->
 
@@ -88,7 +96,7 @@ require('../inc/navbar.php');
 
             <!-- top -->
             <div class="flex flex-row justify-between items-center">
-              <div class="h6 text-yellow-600 fad fa-sitemap"></div>
+            <div class="h6 text-red-700 fad fa-store"></div>
               <span class="rounded-full text-white badge bg-teal-400 text-xs">
                 72%
                 <i class="fal fa-chevron-up ml-1"></i>
@@ -99,7 +107,7 @@ require('../inc/navbar.php');
             <!-- bottom -->
             <div class="mt-8">
               <h1 class="h5 num-4"></h1>
-              <p>total Products</p>
+              <p>Total Notification</p>
             </div>
             <!-- end bottom -->
 
@@ -128,7 +136,7 @@ require('../inc/navbar.php');
             <!-- bottom -->
             <div class="mt-8">
               <h1 class="h5 num-4"></h1>
-              <p>new Visitor</p>
+              <p>Total Comments</p>
             </div>
             <!-- end bottom -->
 
@@ -157,14 +165,14 @@ require('../inc/navbar.php');
 
           <!-- info -->
           <div class="py-2 ml-10">
-            <h1 class="h6">Good Job, Mohamed!</h1>
-            <p class="text-white text-xs">You've finished all of your tasks for this week.</p>
+          <?php
+                $query = "SELECT first_name FROM profile WHERE user_id='$id'";
+                $result = mysqli_query($conn, $query);
+                $row = mysqli_fetch_assoc($result);
+                ?>
+            <h1 class="h6">Welcome, <?php echo $row['first_name']; ?>!</h1>
 
-            <ul class="mt-4">
-              <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Finish Dashboard Design</li>
-              <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Fix Issue #74</li>
-              <li class="text-sm font-light"><i class="fad fa-check-double mr-2"></i> Publish version 1.0.6</li>
-            </ul>
+         
           </div>
           <!-- end info -->
 
@@ -175,12 +183,6 @@ require('../inc/navbar.php');
       <!-- carts -->
       <div class="flex flex-col">
 
-        <!-- alert -->
-        <div class="alert alert-dark mb-6">
-          Hi! Wait A Minute . . . . . . Follow Me On Twitter
-          <a class="ml-2" target="_blank" href="https://twitter.com/MohamedSaid__">@moesaid</a>
-        </div>
-        <!-- end alert -->
 
         <!-- charts -->
         <div class="grid grid-cols-2 gap-6 h-full">

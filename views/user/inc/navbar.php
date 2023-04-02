@@ -1,13 +1,12 @@
 <?php
-session_start();
+@session_start();
 $role =  $_SESSION['role'];
 $id =  $_SESSION['userId'];
 $email = $_SESSION['email'];
-if (!isset($_SESSION['userId'])) {
-    header("location: ../../auth/login.php");
-}
+
 ?>
 <?php include_once "header.php"; ?>
+<?php require('../../connection/secure_user.php'); ?>
 <!-- start navbar -->
 <header>
     <nav class="navigation bg-white z-50  top-0 w-full fixed">
@@ -18,7 +17,7 @@ if (!isset($_SESSION['userId'])) {
             <div class="navbar">
                 <ul class="flex justify-between space-x-5 mt-7 text-lg font-semibold">
                     <li class="p-2 hover:text-teal-700 "><a href="../app/dashboard.php">Home</a> </li>
-                    <li class="p-2 hover:text-teal-700"><a href="../app/"> Job</a></li>
+                    <li class="p-2 hover:text-teal-700"><a href="../app/jobList.php"> Job</a></li>
                     <!-- <li class="p-2 hover:text-teal-700"><a href="">About Us</a> </li> -->
                     <li class="p-2 hover:text-teal-700"><a href="../app/companyList.php">Company</a> </li>
                     <li class="p-2 hover:text-teal-700"><a href="../app/candidateList.php">Candidate</a> </li>
@@ -28,26 +27,27 @@ if (!isset($_SESSION['userId'])) {
 
             <div class="flex space-x-3 mt-8 mr-12">
                 <?php
-
-
-                # code...
+                if ($role == "job-provider") {
                 ?>
+                    <div>
 
-                <div>
-                    <button id="dropdownJob" data-dropdown-toggle="job" class=" bg-teal-700 p-2 text-white hover:bg-white hover:text-teal-700 focus:ring-4 hover:ring-2 hover:ring-teal-600 focus:outline-none focus:ring-teal-600 px-2 font-medium rounded-lg text-sm text-center inline-flex items-center  type=" button">Post a job</button>
-                    <!-- Dropdown menu -->
-                    <div id="job" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700">
-                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownJob">
-                            <li>
-                                <a href="../app/newJob.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-file-plus pr-3"></i>New job</a>
-                            </li>
-                            <li>
-                                <a href="../app/manageJob.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Manage job</a>
-                            </li>
+                        <button id="dropdownJob" data-dropdown-toggle="job" class=" bg-teal-700 p-2 text-white hover:bg-white hover:text-teal-700 focus:ring-4 hover:ring-2 hover:ring-teal-600 focus:outline-none focus:ring-teal-600 px-2 font-medium rounded-lg text-sm text-center inline-flex items-center  type=" button">Post a job</button>
+                        <!-- Dropdown menu -->
+                        <div id="job" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700">
+                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownJob">
+                                <li>
+                                    <a href="../app/newJob.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white"><i class="fa-solid fa-file-plus pr-3"></i>New job</a>
+                                </li>
+                                <li>
+                                    <a href="../app/manageJob.php" class="block px-4 py-2 hover:bg-teal-700 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Manage job</a>
+                                </li>
 
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                <?php
+                }
+                ?>
                 <div class="chat">
 
                     <button id="chat" onclick="chatHandler(false)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -78,137 +78,14 @@ if (!isset($_SESSION['userId'])) {
 
                     </ul>
                 </div>
-                <div class="notification">
-                    <button id="notification" onclick="notificationHandler(false)"><i class="fa-solid fa-bell text-lg px-2 hover:text-teal-700"></i></button>
-                </div>
-
                 <div class="profile flex space-x-2">
-                    <a href="../app/profile.php"> <img src="../../../img/user.svg" class="w-9 -mt-1 " alt=""></a>
-                    <a href="../app/profile.php"> <span class="hover:text-teal-700 text-lg font-semibold"><?php echo $email; ?></span></a>
+                    <h1><?php echo $email;  ?></h1>
+
+
                 </div>
             </div>
         </div>
 
-        <!-- notification start -->
-        <div class="w-full h-full hidden bg-opacity-90 top-24 overflow-y-auto overflow-x-hidden fixed sticky-0" id="chec-div">
-            <div class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="notification">
-                <div class="2xl:w-4/12 bg-gray-50 h-screen overflow-y-auto p-8 absolute right-0">
-                    <div class="flex items-center justify-between">
-                        <p tabindex="0" class="focus:outline-none text-2xl font-semibold leading-6 text-gray-800">Notifications</p>
-                        <button role="button" id="close" aria-label="close modal" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 rounded-md cursor-pointer" onclick="notificationHandler(false)">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg1.svg" alt="icon" />
-
-                        </button>
-                    </div>
-
-                    <div class="w-full p-3 mt-8 bg-white rounded flex">
-                        <div tabindex="0" aria-label="heart icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex items-center justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg2.svg" alt="icon" />
-
-                        </div>
-                        <div class="pl-3">
-                            <p tabindex="0" class="focus:outline-none text-sm leading-none"><span class="text-indigo-700">James Doe</span> favourited an <span class="text-indigo-700">item</span></p>
-                            <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">2 hours ago</p>
-                        </div>
-                    </div>
-                    <div class="w-full p-3 mt-4 bg-white rounded shadow flex flex-shrink-0">
-                        <div tabindex="0" aria-label="group icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex flex-shrink-0 items-center justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg3.svg" alt="icon" />
-
-                        </div>
-                        <div class="pl-3 w-full">
-                            <div class="flex items-center justify-between w-full">
-                                <p tabindex="0" class="focus:outline-none text-sm leading-none"><span class="text-indigo-700">Sash</span> added you to the group: <span class="text-indigo-700">UX Designers</span></p>
-                                <div tabindex="0" aria-label="close icon" role="button" class="focus:outline-none cursor-pointer">
-                                    <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg4.svg" alt="icon" />
-
-                                </div>
-                            </div>
-                            <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">2 hours ago</p>
-                        </div>
-                    </div>
-                    <div class="w-full p-3 mt-4 bg-white rounded flex">
-                        <div tabindex="0" aria-label="post icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex items-center justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg5.svg" alt="icon" />
-
-                        </div>
-                        <div class="pl-3">
-                            <p tabindex="0" class="focus:outline-none text-sm leading-none"><span class="text-indigo-700">Sarah</span> posted in the thread: <span class="text-indigo-700">Update gone wrong</span></p>
-                            <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">2 hours ago</p>
-                        </div>
-                    </div>
-                    <div class="w-full p-3 mt-4 bg-red-100 rounded flex items-center">
-                        <div tabindex="0" aria-label="storage icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-red-200 flex items-center flex-shrink-0 justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg6.svg" alt="icon" />
-
-                        </div>
-                        <div class="pl-3 w-full flex items-center justify-between">
-                            <p tabindex="0" class="focus:outline-none text-sm leading-none text-red-700">Low on storage: 2.5/32gb remaining</p>
-                            <p tabindex="0" class="focus:outline-none text-xs leading-3 cursor-pointer underline text-right text-red-700">Manage</p>
-                        </div>
-                    </div>
-                    <div class="w-full p-3 mt-4 bg-white rounded flex">
-                        <div tabindex="0" aria-label="loading icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex items-center justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg7.svg" alt="icon" />
-
-                        </div>
-                        <div class="pl-3">
-                            <p tabindex="0" class="focus:outline-none text-sm leading-none">Shipmet delayed for order<span class="text-indigo-700"> #25551</span></p>
-                            <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">2 hours ago</p>
-                        </div>
-                    </div>
-                    <h2 tabindex="0" class="focus:outline-none text-sm leading-normal pt-8 border-b pb-2 border-gray-300 text-gray-600">YESTERDAY</h2>
-                    <div class="w-full p-3 mt-6 bg-white rounded flex">
-                        <div tabindex="0" aria-label="post icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex items-center justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg8.svg" alt="icon" />
-
-                        </div>
-                        <div class="pl-3">
-                            <p tabindex="0" class="focus:outline-none text-sm leading-none"><span class="text-indigo-700">Sarah</span> posted in the thread: <span class="text-indigo-700">Update gone wrong</span></p>
-                            <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">2 hours ago</p>
-                        </div>
-                    </div>
-                    <div class="w-full p-3 mt-4 bg-white rounded flex">
-                        <div tabindex="0" aria-label="loading icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex items-center justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg9.svg" alt="icon" />
-
-                        </div>
-                        <div class="pl-3">
-                            <p tabindex="0" class="focus:outline-none text-sm leading-none">Shipmet delayed for order<span class="text-indigo-700"> #25551</span></p>
-                            <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">2 hours ago</p>
-                        </div>
-                    </div>
-                    <div class="w-full p-3 mt-4 bg-white rounded flex">
-                        <div tabindex="0" aria-label="heart icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex items-center justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg10.svg" alt="icon" />
-
-                        </div>
-                        <div class="pl-3">
-                            <p tabindex="0" class="focus:outline-none text-sm leading-none"><span class="text-indigo-700">James Doe</span> favourited an <span class="text-indigo-700">item</span></p>
-                            <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">2 hours ago</p>
-                        </div>
-                    </div>
-                    <div class="w-full p-3 mt-8 bg-green-100 rounded flex items-center">
-                        <div tabindex="0" aria-label="success icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-green-200 flex flex-shrink-0 items-center justify-center">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg11.svg" alt="icon" />
-                        </div>
-                        <div class="pl-3 w-full">
-                            <div class="flex items-center justify-between">
-                                <p tabindex="0" class="focus:outline-none text-sm leading-none text-green-700">Design sprint completed</p>
-                                <p tabindex="0" class="focus:outline-none focus:text-indigo-600 text-xs leading-3 underline cursor-pointer text-green-700">View</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justiyf-between">
-                        <hr class="w-full">
-                        <p tabindex="0" class="focus:outline-none text-sm flex flex-shrink-0 leading-normal px-3 py-16 text-gray-500">Thats it for now :)</p>
-                        <hr class="w-full">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- notification ending -->
 
         <!-- chat start-->
         <div class="w-full h-full hidden bg-opacity-90 top-24 overflow-y-auto overflow-x-hidden fixed sticky-0" id="chat-div">
@@ -219,31 +96,35 @@ if (!isset($_SESSION['userId'])) {
 
                     </div>
 
-                        <section class="users">
-                            <header>
-                                <div class="content">
-                                    <?php
-                                    $sql = mysqli_query($conn, "SELECT * FROM user WHERE id = {$_SESSION['userId']}");
-                                    if (mysqli_num_rows($sql) > 0) {
-                                        $row = mysqli_fetch_assoc($sql);
-                                    }
-                                    ?>
+                    <section class="users">
+                        <header>
+                            <div class="content">
+                                <?php
+                                $sql =  "SELECT * FROM user WHERE 'id' ='$id'";
+                                
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    $row = mysqli_fetch_assoc($result);
+                                ?>
                                     <a href="dashboard.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
                                     <div class="details">
                                         <span><?php echo $row['email'] ?></span>
                                         <p><?php echo $row['status']; ?></p>
                                     </div>
-                                </div>
-                            </header>
-                            <div class="search">
-                                <span class="text">Select an user to start chat</span>
-                                <input type="text" placeholder="Enter name to search...">
-                                <button><i class="fas fa-search"></i></button>
+                                <?php
+                                }
+                                ?>
                             </div>
-                            <div class="users-list">
+                        </header>
+                        <div class="search">
+                            <span class="text">Select an user to start chat</span>
+                            <input type="text" placeholder="Enter name to search...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="users-list">
 
-                            </div>
-                        </section>
+                        </div>
+                    </section>
 
                 </div>
             </div>
@@ -326,7 +207,7 @@ if (!isset($_SESSION['userId'])) {
 
     </nav>
 
-  <script src="../../../assets/js/users.js"></script>
+    <script src="../../../assets/js/users.js"></script>
     <script type="text/javascript" src="../../../assets/js/jQuery.js"></script>
     <!-- chat -->
     <script type="text/javascript">
@@ -386,61 +267,6 @@ if (!isset($_SESSION['userId'])) {
     </script>
 
     <!-- chat -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#notification').click(function() {
-                $('#chec-div').removeClass("hidden");
-
-            });
-            $('#notification').dblclick(function() {
-                $('#chec-div').addClass("hidden");
-
-            });
-            $('#close').click(function() {
-                $('#chec-div').addClass("hidden");
-
-            });
-        });
-
-
-        const nav = document.getElementsByClassName("navigation")
-        window.addEventListener('scroll', () => {
-
-            const y = window.scrollY
-
-            if (y >= 50) {
-                console.log(y)
-                nav[0].classList.remove('bg-transparent');
-                nav[0].classList.add('bg-white');
-            } else {
-
-            }
-        })
-
-        let notification = document.getElementById("notification");
-        let checdiv = document.getElementById("chec-div");
-
-        let flag3 = false;
-        const notificationHandler = () => {
-            if (!flag3) {
-                checdiv.classList.remove("hidden");
-                checdiv.classList.remove("block");
-
-                setTimeout(function() {
-                    checdiv.classList.add("hidden");
-                }, 500);
-                flag3 = true;
-            } else {
-
-                checdiv.classList.remove("hidden");
-                setTimeout(function() {
-
-                }, 500);
-
-                flag3 = false;
-            }
-        };
-    </script>
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 </header>
 

@@ -1,20 +1,18 @@
 <?php
 require('../connection/config.php');
-@session_start();
+session_start();
 
 $skill = $_POST["skills"];
- 
+echo $skill;
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
     $confirmPassword = md5($_POST['confirmpassword']);
 
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $sql = mysqli_query($conn, "SELECT * FROM user WHERE email = '{$email}'");
-        if(mysqli_num_rows($sql) > 0){
-            echo "$email - This email already exist!";
-        }else {
+    if ($email == "" || $password == "" || $confirmPassword == "") {
+        echo header("Location: ../auth/signup.php?msg=error#signup");
+    } else {
         if ($password == $confirmPassword) {
             $status = "inactive";
             $user = "INSERT INTO `user` (email,status) VALUES('$email','$status')";
@@ -57,9 +55,6 @@ if (isset($_POST['submit'])) {
         else {
             echo header("Location: ../auth/signup.php?msg=password#signup");
         }
-     }
-    }else{
-        echo "$email is not a valid email!";
     }
 }
 if (isset($_POST['submit1'])) {
@@ -91,7 +86,7 @@ if (isset($_POST['account'])) {
     $p_type ="g";
     $role = "";
     $userId = $_SESSION["userId"];
-    if ($account === "work") {
+    if ($account == "work") {
         # code...
         $role ="job-seeker";
 
@@ -120,11 +115,12 @@ if (isset($_POST['account'])) {
                    }
                    else {
                     # code...
-                    echo header("Location:../auth/signup.php#skillSelect");
+                    echo header("Location:../user/app/dashboard.php");
                     $_SESSION['role'] = "job-seeker";
                    }
 ?>
 
+                    <meta http-equiv="refresh" content="0;url=../user/app/dashboard.php">
                 <?php
                 } elseif ($row['v2'] == 'admin') {
                     # code...
@@ -140,7 +136,7 @@ if (isset($_POST['account'])) {
 <?php
                 }
             }
-        // echo header("Location:../admin/app/dashboard.php");
+        echo header("Location:../admin/app/dashboard.php");
     }
     else {
         echo header("Location:../auth/signup.php?msg=error#accountType");
@@ -150,3 +146,39 @@ if (isset($_POST['account'])) {
 }
 
 ?>
+
+<script type="text/javascript" src="../../assets/js/jQuery.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function(){
+    
+
+   
+$('#skillForm').submit(function(e){
+    e.preventDefault();
+    var skills =[];
+    $('.skill').each(function(){
+        if ($(this).is(":checked")) {
+            skills.push($(this).val());
+        }
+    });
+    skills = skills.toString();
+    if (skills.length !== 0) {
+        $.ajax({
+            url: "../process/skill.php",
+            method: "POST",
+            data: {type: 1, skills: skills},
+            success: function(data){
+                $('#skillForm').trigger('reset');
+                location.window.href = data;
+            }
+        })
+    }
+    else{
+        alert("please select skill");
+    }
+})
+
+    })
+</script>

@@ -1,5 +1,3 @@
-<!-- Add new job -->
-
 <?php
 require('../../connection/config.php');
 @session_start();
@@ -27,7 +25,7 @@ if(isset($_POST['submit'])) {
     }
     else {
         # code...
-        $query ="INSERT INTO `job_details` (user_id,title,job_category_id, contact_person, email, phone,date, description,skill, experience, availability, language, salary, job_type_id, is_active, status) VALUES('$userId', '$title', '$industry', '$contactPerson', '$email', '$phone', '$finalDate', '$description', '$skill', '$experience', '$availability', '$language', '$rate', '$type','$isActive','$status' )";
+        $query ="INSERT INTO job_details (user_id,title,job_category_id, contact_person, email, phone,date, description,skill, experience, availability, language, salary, job_type_id, is_active, status) VALUES('$userId', '$title', '$industry', '$contactPerson', '$email', '$phone', '$finalDate', '$description', '$skill', '$experience', '$availability', '$language', '$rate', '$type','$isActive','$status' )";
         $jobResult = mysqli_query($conn,$query);
         
         if ($jobResult) {

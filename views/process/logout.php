@@ -1,7 +1,7 @@
 <?php
 
+session_start();
 unset($_SESSION['email']);
-unset($_SESSION['userId']);
 header('Location: ../auth/login.php?msg=logout');
 
 

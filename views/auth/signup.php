@@ -1,7 +1,6 @@
 <?php
 include('../layouts/header.php');
 require('../connection/config.php');
-@session_start();
 
 ?>
 
@@ -174,7 +173,7 @@ require('../connection/config.php');
                 </form>
             </div>
         </div>
-        <div id="skillSelect" class=" content absolute md:w-5/12 w-6/12 h-4/6 py-10 mx-auto mt-8 left-1/3 rounded-md shadow-lg shadow-gray-500 bg-white">
+        <div id="skillSelect" class=" content absolute md:w-5/12 w-6/12 lg:h-5/6 h-4/6 py-10 mx-auto mt-8 left-1/3 rounded-md shadow-lg shadow-gray-500 bg-white">
             <div class="header-logo flex justify-between">
                 <button id="backToAccount" onclick="BackAccount()">
                     <i class="fa-solid fa-chevron-left absolute ml-10 text-gray-400 -mt-2"></i>
@@ -184,80 +183,59 @@ require('../connection/config.php');
 
             <!-- select skill -->
             <div class="skill-select mx-10 mt-8 ">
-                <form id="skillForm" class="space-y-9">
+                <form id="skillForm" method="post" enctype="multipart/form-data" class="space-y-9">
                     <h1 class="text-xl font-bold mb-3">Choose Skills you have</h1>
 
                     <div class="type">
-                    <div class="w-full flex flex-col items-center h-20 mx-auto">
-    <div class="w-full px-4">
-        <div class="flex flex-col items-center relative">
-            <div class="w-full  svelte-1l8159u" id="response">
-                <div class="my-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u">
-                    <div class="flex flex-auto flex-wrap" id="skillTitle">
-                       
-                        <div class="flex-1 h-8 w-full overflow-x-scroll overflow-y-scroll">
-                            <input placeholder="" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800">
-                        </div>
-                    </div>
-                    <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
-                        <button class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up w-4 h-4">
-                                <polyline points="18 15 12 9 6 15"></polyline>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-           
-<ul class="w-full h-44 overflow-y-scroll -mt-2 text-sm font-medium text-gray-900 bg-white rounded-b-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-    <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input  type="checkbox" id="Vue js" name="skill" value="Vue js" class="w-4 skill h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="vue js" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
-        </div>
-    </li>
-    <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input  type="checkbox" id="PHP" name="skill" value="PHP" class="w-4 skill h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="PHP" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
-        </div>
-    </li>
-    <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input  type="checkbox" id="phython" name="skill" value="phython" class="w-4 skill h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="phython" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
-        </div>
-    </li>
-    <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input  type="checkbox" id="laravel" name="skill" value="laravel" class="w-4 skill h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="laravel" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Vue JS</label>
-        </div>
-    </li>
-    <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input  type="checkbox" id="react" name="skill" value="react" class="w-4 h-4 skill text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="react" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-        </div>
-    </li>
-    <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input  type="checkbox" id="angular" name="skill" value="angular" class="w-4 skill h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="angular" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Angular</label>
-        </div>
-    </li>
-    <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
-        <div class="flex items-center pl-3">
-            <input  type="checkbox" id="tailwindcss" name="skill" value="tailwindcss" class="w-4 skill h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="tailwindcss" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">Laravel</label>
-        </div>
-    </li>
-</ul>
+                        <div class="w-full flex flex-col items-center h-20 mx-auto">
+                            <div class="w-full px-4">
+                                <div class="flex flex-col items-center relative">
+                                    <div class="w-full  svelte-1l8159u" id="response">
+                                        <div class="my-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u">
+                                            <div class="flex flex-auto flex-wrap" id="skillTitle">
 
-        </div>
-    </div>
-</div>
-<button id="submit">submit</button>
+                                                <div class="flex-1 h-8 w-full overflow-x-scroll overflow-y-scroll">
+                                                    <input placeholder="Skills...." class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800">
+                                                </div>
+                                            </div>
+                                            <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
+                                                <button class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up w-4 h-4">
+                                                        <polyline points="18 15 12 9 6 15"></polyline>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="w-full h-44 overflow-y-scroll -mt-2 text-sm font-medium text-gray-900 bg-white rounded-b-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                        <?php
+                                        $skill_Query = "SELECT * FROM skills WHERE status = 'true'";
+                                        $result = mysqli_query($conn, $skill_Query);
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            # code...
+                                        ?>
+                                            <li class="w-full rounded-t-lg border-b border-gray-200 dark:border-gray-600">
+                                                <div class="flex items-center pl-3">
+                                                    <input type="checkbox" id="<?php echo $row['name']; ?>" name="skill" value="<?php echo $row['id']; ?>" class="w-4 skill h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                    <label for="vue js" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300"><?php echo $row['name']; ?></label>
+                                                </div>
+                                            </li>
+                                        <?php
+                                        }
+                                        ?>
+
+
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <button class="inline-block px-3 py-5 mt-5 text-white font-medium text-10  rounded-xl  leading-tight uppercase shadow-md hover:bg-blue-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg
+                        transition duration-150 ease-in-out w-2/3 mb-3  bg-blue-500 " type="submit " data-mdb-ripple="true " data-mdb-ripple-color="light " name="submit" value="submit">
+                                Submit
+                            </button>
+                        </div>
+
                     </div>
                 </form>
             </div>
@@ -268,31 +246,40 @@ require('../connection/config.php');
 <script type="text/javascript" src="../../assets/js/frontend.js"></script>
 <script type="text/javascript" src="../../assets/js/jQuery.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $(".skill").change(function(e){
-           
+    $(document).ready(function() {
+
+
+
+        $('#skillForm').submit(function(e) {
             e.preventDefault();
-    var skills = [];
-    skills.push($(this).val());
-    $(".skill:checkbox").each(function(){
-        if ($(this).is(":checked")) {
-           
-            
-            console.log('#'+$(this).val());
-            $("#skillTitle").append     ('<div class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-teal-700 bg-teal-100 border border-teal-300 ">'
-                          +  '<div class="text-xs font-normal leading-none max-w-full flex-initial">' + $(this).val() + '</div>'
-                           + '<div class="flex flex-auto flex-row-reverse">'
-                             +   '<div>'
-                                 +   '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x cursor-pointer hover:text-teal-400 rounded-full w-4 h-4 ml-2">'
-                                    +    '<line x1="18" y1="6" x2="6" y2="18">' + '</line>'
-                                       + '<line x1="6" y1="6" x2="18" y2="18">' + '</line>'
-                                  +  '</svg>'
-                              +  '</div>'
-                           + '</div>'
-                      +  '</div>' )
-        }
-    });
+            var skills = [];
+            $('.skill').each(function() {
+                if ($(this).is(":checked")) {
+                    skills.push($(this).val());
+                }
+            });
+            skills = skills.toString();
+            if (skills.length !== 0) {
+                $.ajax({
+                    url: "../process/skill.php",
+                    method: "POST",
+                    data: {
+                        type: 1,
+                        skills: skills
+                    },
+                    success: function(data) {
+                        $('#skillForm').trigger('reset');
+                        if (data == 'true') {
+                            location.window.href = "../user/app/dashboard.php";
+                        }
+                        location.window.href = data;
+                    }
+                })
+            } else {
+                alert("please select skill");
+            }
         })
+
     })
 </script>
 </body>

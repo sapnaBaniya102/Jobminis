@@ -76,27 +76,19 @@ include '../layouts/nav.php'
                         <h1 class="text-xl font-semibold">Recent Articles</h1>
                         <div class="articles">
                             <div class="card grid grid-cols-6 gap-3 my-4">
-                                <div class="card-left col-span-2">
-                                    <img src="../../public/gettyimages-157399544-612x612.jpeg" class="w-full h-16 rounded-xl " alt="">
-                                </div>
                                 <div class="card-right col-span-4">
                                     <h1 class="font-semibold">How to apply for job</h1>
                                     <span class="text-sm text-gray-500 font-light">September 2, 2005</span>
                                 </div>
                             </div>
                             <div class="card grid grid-cols-6 gap-3 my-4">
-                                <div class="card-left col-span-2">
-                                    <img src="../../public/gettyimages-157399544-612x612.jpeg" class="w-full h-16 rounded-xl " alt="">
-                                </div>
+                                
                                 <div class="card-right col-span-4">
                                     <h1 class="font-semibold">How to apply for job</h1>
                                     <span class="text-sm text-gray-500 font-light">September 2, 2005</span>
                                 </div>
                             </div>
                             <div class="card grid grid-cols-6 gap-3 my-4">
-                                <div class="card-left col-span-2">
-                                    <img src="../../public/gettyimages-157399544-612x612.jpeg" class="h-16 w-full rounded-xl " alt="">
-                                </div>
                                 <div class="card-right col-span-4">
                                     <h1 class="font-semibold">How to apply for jobs</h1>
                                     <span class="text-sm text-gray-500 font-light">September 2, 2005</span>

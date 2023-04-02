@@ -62,28 +62,12 @@ $address_id = $_POST['address_id'];
     }
    }
    }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
 }
 else{
     echo "error"; 
 }
 ?>
-<script type="text/javascript" src="../../../dist/js/jQuery.js"></script>
+<script type="text/javascript" src="../../../assets/js/jQuery.js"></script>
 <script type="text/javascript">
 
 $("#notice-close").click(function(){

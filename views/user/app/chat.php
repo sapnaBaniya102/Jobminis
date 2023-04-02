@@ -1,12 +1,12 @@
 <?php 
-  session_start();
+  @session_start();
   include_once "../../connection/config.php";
   if(!isset($_SESSION['userId'])){
     header("location: ../../auth/login.php");
   }
 ?>
 <?php include_once "header.php"; ?>
-<body>
+<body class="bodypart">
   <div class="wrapper">
     <section class="chat-area">
       <header>

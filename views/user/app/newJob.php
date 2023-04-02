@@ -1,4 +1,6 @@
 <?php
+@session_start();
+require('../../connection/secure_user.php');
 include '../inc/header.php';
 require('../inc/navbar.php');
 require('../../connection/config.php');
